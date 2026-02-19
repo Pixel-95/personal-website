@@ -1,0 +1,420 @@
+/* design/tokens.css */
+:root {
+  --bg-dark: hsl(0 0% 0%);
+  --bg: hsl(0 0% 5%);
+  --bg-light: hsl(0 0% 13%);
+  --bg-deactivated: var(--bg-light);
+
+  --bg-gradient: linear-gradient(0deg, var(--bg) 95%, var(--bg-light));
+  --bg-gradient-hover: linear-gradient(0deg, var(--bg), var(--bg-light));
+
+  --text: hsl(0 0% 95%);
+  --text-muted: hsl(0 0% 75%);
+  --text-deactivated: hsl(0 0% 40%);
+
+  --border: hsl(0 0% 25%);
+
+  --shadow: 0px 2px 2px hsla(0, 0%, 0%, 0.07), 0px 4px 4px hsla(0, 0%, 0%, 0.15);
+  --shadow-soft: 0px 2px 2px hsla(0, 0%, 0%, 0.07);
+
+  /* #2265C3 */
+  --primary: hsl(215 70% 50%);
+  --primary-dark: hsl(215 70% 42%);
+
+  /* #C2401F */
+  --primary-dark: hsl(12.15, 72.44%, 34.12%);
+  --primary: hsl(12.15, 72.44%, 44.12%);
+
+  --destructive: hsl(0 85% 45%);
+  --destructive-dark: hsl(0 65% 35%);
+  --destructive-light: hsl(0 65% 92%);
+
+  --warning-dark: hsl(30 80% 40%);
+  --warning: hsl(45 80% 45%);
+  --warning-light: hsl(45 80% 92%);
+
+  --success-dark: hsl(120 50% 25%);
+  --success: hsl(120 50% 40%);
+  --success-light: hsl(120 50% 90%);
+
+  --radius-card: 1.25rem;
+  --radius-button: 0.75rem;
+}
+
+:root[data-theme="light"] {
+  --bg-dark: hsl(30 5% 92%);
+  --bg: hsl(30 5% 96%);
+  --bg-light: hsl(0 0% 100%);
+  --bg-deactivated: var(--bg-dark);
+
+  --bg-gradient: linear-gradient(0deg, var(--bg) 95%, var(--bg-light));
+  --bg-gradient-hover: linear-gradient(0deg, var(--bg), var(--bg-light));
+
+  --text: hsl(0 0% 5%);
+  --text-muted: hsl(0 0% 25%);
+  --text-deactivated: hsl(0 0% 60%);
+
+  --border: hsl(0 0% 85%);
+
+  --shadow: 0px 2px 2px hsla(0, 0%, 0%, 0.07), 0px 4px 4px hsla(0, 0%, 0%, 0.15);
+
+  --primary-dark: hsl(12.15, 72.44%, 39.12%);
+
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background: var(--bg-dark);
+  color: var(--text-muted);
+  font-family: "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+}
+
+.mockup-main {
+  width: min(100%, 28rem);
+  display: grid;
+  gap: 1rem;
+}
+
+.card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+}
+
+.card-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.25rem;
+}
+
+.brand-logo {
+  width: 3rem;
+  height: 3rem;
+  object-fit: contain;
+  display: block;
+  filter: invert(1);
+}
+
+.brand-name {
+  color: var(--text);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+:root[data-theme="light"] .brand-logo {
+  filter: none;
+}
+
+.card h1 {
+  margin: 0;
+  color: var(--text);
+  font-size: 2rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.card h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.card p {
+  margin: 0.9rem 0 1.8rem;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.button-showcase {
+  display: grid;
+  gap: 0.75rem;
+  justify-items: start;
+}
+
+.inline-action {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.button {
+  border-radius: var(--radius-button);
+  border: 0px solid var(--border);
+  color: var(--text);
+  font: inherit;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0.9rem 1.35rem;
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+}
+
+.button.primary {
+  background: var(--primary);
+}
+
+.button.secondary {
+  background: var(--bg-light);
+}
+
+.button.destructive {
+  background: var(--bg-light);
+  color: var(--destructive);
+}
+
+.button.inline {
+  background: transparent;
+  color: var(--primary);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  font-weight: 600;
+  line-height: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.button.active,
+.button:active {
+  box-shadow: none;
+}
+
+.button.primary:active {
+  background: var(--primary-dark);
+}
+
+.button.secondary:active {
+  background: var(--bg-dark);
+}
+
+.button.destructive:active {
+  background: var(--destructive);
+  color: var(--text);
+}
+
+.button.inline:active {
+  color: var(--text);
+}
+
+.button.disabled,
+.button:disabled {
+  background: var(--bg-deactivated);
+  color: var(--text-deactivated);
+  box-shadow: none;
+}
+
+.button.disabled:active,
+.button:disabled:active {
+  background: var(--bg-deactivated);
+  color: var(--text-deactivated);
+  box-shadow: none;
+}
+
+.form-showcase {
+  margin-top: 1.25rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.danger-zone {
+  margin-top: 1.25rem;
+  display: grid;
+  gap: 0.75rem;
+  justify-items: start;
+}
+
+.danger-zone summary {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  cursor: pointer;
+}
+
+.notifications {
+  margin-top: 1.25rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.notifications-card .notifications {
+  margin-top: 0;
+}
+
+.notification {
+  margin: 0;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-button);
+  font-size: 0.9rem;
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.notification.success {
+  color: var(--success-dark);
+  background: var(--success-light);
+  border-color: var(--success-dark);
+}
+
+.notification.warning {
+  color: var(--warning-dark);
+  background: var(--warning-light);
+  border-color: var(--warning-dark);
+}
+
+.notification.destructive {
+  color: var(--destructive-dark);
+  background: var(--destructive-light);
+  border-color: var(--destructive-dark);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: minmax(8rem, 9.5rem) minmax(0, 1fr);
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.form-row>label,
+.row-label {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.control {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-button);
+  background: var(--bg-light);
+  color: var(--text);
+  font: inherit;
+  padding: 0.55rem 0.75rem;
+}
+
+.control-range {
+  --range-percent: 50%;
+  width: 100%;
+  margin: 0;
+  height: 1.5rem;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+}
+
+.control-range::-webkit-slider-runnable-track {
+  height: 0.4rem;
+  border-radius: 999px;
+  background: linear-gradient(to right,
+      var(--text) 0%,
+      var(--text) var(--range-percent),
+      var(--bg-light) var(--range-percent),
+      var(--bg-light) 100%);
+}
+
+.control-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  margin-top: -0.3rem;
+  border: 1px solid var(--text);
+  border-radius: 50%;
+  background: var(--text);
+}
+
+.control-range:hover::-webkit-slider-runnable-track,
+.control-range:active::-webkit-slider-runnable-track {
+  background: linear-gradient(to right,
+      var(--text) 0%,
+      var(--text) var(--range-percent),
+      var(--bg-light) var(--range-percent),
+      var(--bg-light) 100%);
+}
+
+.switch-control {
+  display: inline-flex;
+  align-items: center;
+}
+
+.switch-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.switch-track {
+  position: relative;
+  width: 2.6rem;
+  height: 1.5rem;
+  border: 1.5px solid var(--text-deactivated);
+  border-radius: 999px;
+  background: var(--bg-light);
+}
+
+.switch-track::after {
+  content: "";
+  position: absolute;
+  left: 0.15rem;
+  top: 50%;
+  width: 1.08rem;
+  height: 1.08rem;
+  border-radius: 50%;
+  background: var(--text-deactivated);
+  transform: translateY(-50%);
+}
+
+.switch-input:checked+.switch-track {
+  border-color: var(--text);
+  background: var(--bg-light);
+}
+
+.switch-input:checked+.switch-track::after {
+  transform: translate(1.02rem, -50%);
+  background: var(--text);
+}
+
+.radio-group {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: flex;
+  gap: 0.9rem;
+}
+
+.radio-option,
+.checkbox-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.radio-option input,
+.checkbox-control input {
+  margin: 0;
+  accent-color: var(--text);
+}

@@ -2,436 +2,164 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Dr. Mario Zinßer (Dr. Mario Zinsser)</title>
-	<meta name="description" content="Dr. Mario Zinßer">
-	<link rel="canonical" href="https://mario-zinsser.com/">
-	<meta property="og:title" content="Dr. Mario Zinßer (Dr. Mario Zinsser)">
-	<meta property="og:description" content="Software Engineer at TRIQ with a physics and PV modeling background. CV, projects, publications, and contact for partners, companies, and investors.">
-	<meta property="og:type" content="website">
-	<meta property="og:url" content="https://mario-zinsser.com/">
-	<meta name="twitter:card" content="summary">
-	<meta name="twitter:title" content="Dr. Mario Zinßer (Dr. Mario Zinsser)">
-	<meta name="twitter:description"
-		content="Software Engineer at TRIQ. CV, project portfolio, publications, and contact.">
-	<link rel="icon" type="image/png" href="favicon.png">
-	<link rel="stylesheet" href="site.css">
-	<script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Dr. Mario Zinßer",
-    "alternateName": ["Mario Zinsser", "Mario Zinßer", "Dr. Mario Zinsser"],
-    "url": "https://mario-zinsser.com/",
-    "jobTitle": "Software Engineer",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "TRIQ"
-    },
-    "alumniOf": [
-      {
-        "@type": "CollegeOrUniversity",
-        "name": "Karlsruhe Institute of Technology (KIT)"
-      },
-      {
-        "@type": "CollegeOrUniversity",
-        "name": "University of Stuttgart"
-      }
-    ],
-    "sameAs": [
-      "https://www.linkedin.com/in/mario-zinsser/",
-      "https://www.instagram.com/mario.zinsser/",
-      "https://x.com/MarioZinsser",
-      "https://github.com/Pixel-95",
-	  "https://www.youtube.com/channel/UCUj9yOCZuelCOo4eMALc9Tw"
-    ]
-  }
-  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Theme Toggle Mockup</title>
+  <link rel="stylesheet" href="./tokens.css" />
 </head>
 
 <body>
-	<a href="#main" class="skip-link">Skip to main content</a>
-	<header>
-		<h1>Dr. Mario Zinßer</h1>
-		<p>
-			Scientist and Engineer by training. Creator by conviction.
-		</p>
-		<p>
-			With a background in physics and engineering, I approach problems with structure, curiosity, and long-term
-			thinking. Whether in technology or endurance sport, I believe progress emerges from clarity, discipline, and
-			the courage to pursue ambitious goals over time.
-		</p>
-		<p>
-			My work combines scientific depth with practical execution. I enjoy transforming complex systems into
-			elegant solutions and turning ambitious visions into measurable outcomes. Curiosity fuels the start;
-			disciplined iteration brings it to reality.
-		</p>
-		<p>
-			My background in physics and engineering shapes how I think and curiosity and persistence define how I act.
-		</p>
-		<p>
-			A recurring principle in my thinking is that mindset drives outcomes: long-term, difficult goals become
-			manageable through disciplined iteration.
-			This position connects scientific rigor with endurance-oriented execution in both engineering and sport.
-		</p>
-		<p>
-			Personal volunteering in rescue and youth leadership contexts suggests a practical bias toward
-			responsibility, reliability, and contribution beyond purely technical work.
-		</p>
-	</header>
+  <main class="mockup-main">
+    <article class="card">
+      <header class="card-brand">
+        <img class="brand-logo" src="./assets/tri2max_logo_lightMode.png" alt="Tri2Max logo" />
+        <span class="brand-name">TRI2MAX</span>
+      </header>
+      <h1>Main Heading</h1>
+      <p>A muted shade for the rest of the text.</p>
+      <p class="inline-action">
+        Inline action:
+        <button class="button inline" type="button">Learn more</button>,
+        but dont learn too much.
+      </p>
+      <div class="button-showcase" aria-label="Button variants">
+        <button id="theme-toggle" class="button primary" type="button" aria-label="Toggle theme">Go to light
+          mode</button>
+        <button id="notifications-toggle" class="button secondary" type="button" aria-controls="notifications-card"
+          aria-expanded="false">Show Notifications</button>
+        <button id="notifications-toggle" class="button secondary disabled" type="button" aria-controls="notifications-card"
+          aria-expanded="false" disabled>Cannot be pressed</button>
+      </div>
 
-	<main id="main">
+      <section class="form-showcase" aria-label="Form elements">
+        <div class="form-row">
+          <label for="field-text">Text Input</label>
+          <input id="field-text" class="control" type="text" value="Tri2Max Project" />
+        </div>
 
-		<section id="curriculum-vitae">
-			<h2>Curriculum Vitae</h2>
-			<ul>
-				<li>
-					<article>
-						<h3>Canyoning Guide</h3>
-						<p>Blue River Canyoning · Freiberuflich</p>
-						<p>Juni 2024–Heute · 1 Jahr 9 Monate</p>
-						<p>Weiler im Allgäu, Bayern, Deutschland · Vor Ort</p>
-						<ul>
-							<li>Professionally trained and certified to lead canyoning tours</li>
-							<li>Guiding tours all across Europe</li>
-							<li>Ensuring the highest safety standards and managing risk for participants in dynamic
-								environments</li>
-							<li>Multi-discipline expertise in outdoor sports</li>
-							<li>Creating memorable experiences for diverse groups of adventurers.</li>
-							<li>Certified in first aid and trained to handle emergencies in remote settings</li>
-							<li>Enthusiastic about sharing the beauty of canyons and their fascinating nature with
-								people of all skill levels</li>
-							<li>Teamführung, Risikomanagement und +3 Kenntnisse</li>
-						</ul>
-					</article>
-				</li>
-				<li>
-					<article>
-						<h3>Head of Research And Development</h3>
-						<p>TRIQ Triathlon · Vollzeit</p>
-						<p>Feb. 2023–Sept. 2025</p>
-						<p>Zürich, Schweiz · Hybrid</p>
-						<ul>
-							<li>Coordinating the development of a python-based software for triathlon training planning
-							</li>
-							<li>Directing the development and strategic integration of mathematical models to simulate
-								and understand biological dynamics and enhancing the predictive accuracy of training
-								methodologies</li>
-							<li>Orchestrating the development lifecycle from concept through implementation to testing
-								of training planning software</li>
-							<li>Guiding data science with real-world training data</li>
-							<li>Conducting cutting-edge scientific research on advanced concepts such as heart rate
-								variability analysis or threshold detection, focusing on their application and
-								implementation within the app environment</li>
-							<li>App development, ensuring the delivery of a user-friendly and robust application</li>
-							<li>Forschung und Entwicklung (F&amp;E), Modellierung und +9 Kenntnisse</li>
-						</ul>
-					</article>
-				</li>
-				<li>
-					<article>
-						<h3>Research Scientist</h3>
-						<p>Zentrum für Sonnenenergie und Wasserstoff-Forschung Baden-Württemberg ZSW · Vollzeit</p>
-						<p>Apr. 2019–Dez. 2022 · 3 Jahre 9 Monate</p>
-						<p>Stuttgart, Baden-Württemberg, Deutschland · Hybrid</p>
-						<ul>
-							<li>Development of simulation software for photovoltaic modules in C#</li>
-							<li>Multiphysics simulations from semiconductor physics to optical interferences to
-								electrical conductivity</li>
-							<li>Production of solar cells and modules in inline-production manufacturing plants</li>
-							<li>Sputtering of TCO layers</li>
-							<li>Physik, Objektorientierte Programmierung (OOP) und +3 Kenntnisse</li>
-						</ul>
-					</article>
-				</li>
-				<li>
-					<article>
-						<h3>Visiting Researcher</h3>
-						<p>University of Hawaii at Manoa</p>
-						<p>Apr. 2022–Mai 2022</p>
-						<ul>
-							<li>Kenntnisse: Solarzellen, Dünnschichttechnologie, +1 Kenntnis</li>
-						</ul>
-					</article>
-				</li>
-				<li>
-					<article>
-						<h3>Research Associate</h3>
-						<p>Universität Stuttgart · Teilzeit</p>
-						<p>Nov. 2014–März 2019 · 4 Jahre 5 Monate</p>
-						<p>Stuttgart, Baden-Württemberg, Deutschland · Vor Ort</p>
-						<ul>
-							<li>Conducting research in the microwave laboratory</li>
-							<li>Leading exercise groups in experimental physics and mathematics</li>
-							<li>Holding tutoring sessions</li>
-							<li>Supervising physics practical courses</li>
-							<li>Designing and grading exams in experimental physics</li>
-							<li>Mentoring of several bachelor students</li>
-						</ul>
-					</article>
-				</li>
-				<li>
-					<article>
-						<h3>Technischer Leiter</h3>
-						<p>DLRG</p>
-						<p>März 2021–März 2023 · 2 Jahre 1 Monat</p>
-						<p>Katastrophenhilfe/humanitäre Hilfe</p>
-						<ul>
-							<li>Technische Abläufe im Ehrenamt organisiert und koordiniert.</li>
-							<li>Einsatzbereitschaft von Material und Team unterstützt.</li>
-							<li>Sicherheits- und Prozessstandards in der Ortsgruppe mitgestaltet.</li>
-						</ul>
-					</article>
-				</li>
-				<li>
-					<article>
-						<h3>Jugendleiter</h3>
-						<p>DLRG</p>
-						<p>März 2013–März 2021 · 8 Jahre 1 Monat</p>
-						<p>Katastrophenhilfe/humanitäre Hilfe</p>
-						<ul>
-							<li>Jugendarbeit in der Ortsgruppe langfristig begleitet.</li>
-							<li>Aktivitäten, Trainings und Ausflüge mitgeplant und umgesetzt.</li>
-							<li>Verantwortung für Betreuung und Entwicklung junger Mitglieder übernommen.</li>
-						</ul>
-					</article>
-				</li>
-				<li>
-					<article>
-						<h3>Schwimmtrainer</h3>
-						<p>DLRG</p>
-						<p>März 2015–Feb. 2024 · 9 Jahre</p>
-						<p>Kinder</p>
-						<ul>
-							<li>Schwimmtraining für Kinder regelmäßig durchgeführt.</li>
-							<li>Technik, Sicherheit im Wasser und Ausdauer altersgerecht vermittelt.</li>
-							<li>Lernfortschritte dokumentiert und individuell begleitet.</li>
-						</ul>
-					</article>
-				</li>
-				<li>
-					<article>
-						<h3>Webmaster</h3>
-						<p>DLRG</p>
-						<p>März 2014–Heute · 12 Jahre</p>
-						<p>Katastrophenhilfe/humanitäre Hilfe</p>
-						<ul>
-							<li>Webseiteninhalte gepflegt und technisch betreut.</li>
-							<li>Informationen für Mitglieder und Öffentlichkeit aktuell gehalten.</li>
-							<li>Digitale Kommunikation der Ortsgruppe unterstützt.</li>
-						</ul>
-					</article>
-				</li>
-				<li>
-					<article>
-						<h3>Dr.-Ing., Elektrotechnik und Informationstechnik</h3>
-						<p>Karlsruher Institut für Technologie (KIT)</p>
-						<p>Apr. 2019–Dez. 2022</p>
-						<p>Note: Summa cum laude (1,0)</p>
-					</article>
-				</li>
-				<li>
-					<article>
-						<h3>Apprenticeship / Ausbildung, Canyoning Guide / Schluchtenführer</h3>
-						<p>Bergsportführerverband Salzburg</p>
-						<p>Mai 2024–Sept. 2024</p>
-						<ul>
-							<li>Rope and Knot Techniques</li>
-							<li>Rescue Techniques</li>
-							<li>Anchor Construction</li>
-							<li>Navigation</li>
-							<li>Leadership Techniques</li>
-							<li>Tour Planning and Guidance</li>
-							<li>Topography and Geology of Canyons</li>
-							<li>Meteorology</li>
-							<li>Hazard and Accident Knowledge</li>
-							<li>Hydrology and Water Dynamics</li>
-							<li>Whitewater Swimming</li>
-							<li>Jumping and Sliding Techniques</li>
-							<li>Kenntnisse: Leadership, Technische Hilfeleistung, +4 Kenntnisse</li>
-						</ul>
-					</article>
-				</li>
-				<li>
-					<article>
-						<h3>Apprenticeship / Ausbildung, Paramedic / Rettungssanitäter</h3>
-						<p>Deutsches Rotes Kreuz Landesschule Baden-Württemberg Standort Ulm</p>
-						<p>Feb. 2019–Dez. 2019</p>
-						<ul>
-							<li>Aktivitäten und Verbände: Rescue Service, Emergency Room, Anesthesia</li>
-							<li>Kenntnisse: Notfallmedizin, Notfallversorgung, +4 Kenntnisse</li>
-						</ul>
-					</article>
-				</li>
-				<li>
-					<article>
-						<h3>Master of Science - MS, Physics</h3>
-						<p>Universität Stuttgart</p>
-						<p>Okt. 2016–Sept. 2018</p>
-						<p>Note: 1,0</p>
-					</article>
-				</li>
-				<li>
-					<article>
-						<h3>Visiting Researcher</h3>
-						<p>Simon Fraser University</p>
-						<p>Okt. 2017–Okt. 2017</p>
-						<ul>
-							<li>Kenntnisse: Mikrowellentechnik, Matlab, +2 Kenntnisse</li>
-						</ul>
-					</article>
-				</li>
-				<li>
-					<article>
-						<h3>Bachelor of Science - BS, Physics</h3>
-						<p>Universität Stuttgart</p>
-						<p>Okt. 2013–Sept. 2016</p>
-						<p>Note: 1,6</p>
-					</article>
-				</li>
-			</ul>
-		</section>
+        <div class="form-row">
+          <label for="field-slider">Slider</label>
+          <input id="field-slider" class="control-range" type="range" min="0" max="100" value="60" />
+        </div>
 
-		<section id="project-portfolio">
-			<h2>Project Portfolio</h2>
-			<ul>
-				<li>
-					<article>
-						<h3>tri2max</h3>
-						<p>asdf.</p>
-						<p><strong>Tech stack:</strong> ...</p>
-						<p>
-							<a href="https://tri2max.app/">Website</a> |
-							<a href="https://www.instagram.com/tri2max/">Instagram</a>
-						</p>
-					</article>
-				</li>
-				<li>
-					<article>
-						<h3>Canyon Explore</h3>
-						<p>asdf.</p>
-						<p><strong>Tech stack:</strong> ...</p>
-						<p>
-							<a href="https://canyon-explore.com/">Website</a> |
-							<a href="https://www.instagram.com/canyon.explore/">Instagram</a>
-						</p>
-					</article>
-				</li>
-				<li>
-					<article>
-						<h3>I-V Curve Fitting</h3>
-						<p>Fits solar device I-V characteristic data with a one-diode model.</p>
-						<p><strong>Tech stack:</strong> Executable tool; GitHub source repository available.</p>
-						<p>
-							<a href="https://github.com/Pixel-95/SolarCell_DiodeModel_Fitting">GitHub</a>
-						</p>
-					</article>
-				</li>
-				<li>
-					<article>
-						<h3>Transfer-Matrix Method</h3>
-						<p>asdf.</p>
-						<p><strong>Tech stack:</strong> ...</p>
-						<p>
-							<a href="https://github.com/Pixel-95/TransferMatrix">GitHub</a>
-						</p>
-					</article>
-				</li>
-			</ul>
-		</section>
+        <div class="form-row">
+          <label for="field-select">Dropdown / Select</label>
+          <select id="field-select" class="control">
+            <option>Option A</option>
+            <option>Option B</option>
+            <option>Option C</option>
+          </select>
+        </div>
 
-		<section id="testimonials">
-			<h2>Testimonials</h2>
-			<blockquote>
-				<p>Mario is a person, that ... I enjoyed working with him. Or maybe not?</p>
-				<cite>Hans Peter, CEO, MyCompany</cite>
-			</blockquote>
-		</section>
+        <div class="form-row">
+          <label for="field-switch">Switch</label>
+          <label class="switch-control" for="field-switch">
+            <input id="field-switch" class="switch-input" type="checkbox" checked />
+            <span class="switch-track" aria-hidden="true"></span>
+          </label>
+        </div>
 
-		<section id="publications">
-			<h2>Publications</h2>
-			<ol>
-				<li>M. Zinßer, T. Helder, T. Magorian Friedlmeier, A. Bauer, T. Kirchartz, U. Rau, R. Wächter, M.
-					Powalla<br><em>Holistic Yield Modeling, Top-Down Loss Analysis, and Efficiency Potential Study of
-						Thin-Film Solar Modules</em><br><a href="https://www.nature.com/articles/s42005-023-01164-6"
-						target="_blank" rel="noopener noreferrer">Communications Physics 6, 55</a> (2023)</li>
-				<li>M. Zinßer<br><em>Electrical and Optical Modeling of Thin-Film Photovoltaic Modules</em><br><a
-						href="https://publikationen.bibliothek.kit.edu/1000154743" target="_blank"
-						rel="noopener noreferrer">PhD thesis at Karlsruhe Institute of Technology</a> (2022)</li>
-				<li>T. Helder, A. Kanevce, M. Zinßer, R. Gutzler, S. Paetel, W. Hempel, T. Magorian Friedlmeier, M.
-					Powalla<br><em>How small changes make a difference: Influence of low silver contents on the effect
-						of RbF-PDT in CIGS solar cells</em><br><a
-						href="https://onlinelibrary.wiley.com/doi/abs/10.1002/pip.3628" target="_blank"
-						rel="noopener noreferrer">Progress in Photovoltaics: Research and Applications</a> (2022)</li>
-				<li>M. Zinßer, B. Braun, T. Helder, T. Magorian Friedlmeier, B. Pieters, A. Heinlein, M. Denk, D.
-					Göddeke, M. Powalla<br><em>Irradiation-dependent Topology Optimization of Metallization Grid
-						Patterns used for latitude-based Yield Gain of Thin-film Solar Modules</em><br><a
-						href="https://link.springer.com/article/10.1557/s43580-022-00321-3" target="_blank"
-						rel="noopener noreferrer">MRS Advances 7, 706-712</a> (2022)</li>
-				<li>M. Zinßer<br><em>Numerically Robust Methodology for Fitting Current-Voltage Characteristics of Solar
-						Devices with the Single-Diode Equivalent-Circuit Model</em><br><a
-						href="https://arxiv.org/abs/2206.13087" target="_blank"
-						rel="noopener noreferrer">arXiv:2206.13087 [physics.comp-ph]</a> (2022)</li>
-				<li>M. Zinßer, T. Helder, A. Bauer, T. Magorian Friedlmeier, J. Zillner, J.-P. Becker, M.
-					Powalla<br><em>Optical and Electrical Loss Analysis of Thin-film Solar Cells combining the Methods
-						of Transfer-Matrix and Finite Elements</em><br><a
-						href="https://ieeexplore.ieee.org/document/9839509" target="_blank"
-						rel="noopener noreferrer">IEEE Journal of Photovoltaics 12, 1154-1161</a> (2022)</li>
-				<li>T. Helder, A. Kanevce, A. Bauer, M. Zinßer, S. Paetel, T. Magorian Friedlmeier, M.
-					Powalla<br><em>DLTS investigations on CIGS solar cells from an inline co-evaporation system with RbF
-						post-deposition treatment</em><br><a
-						href="https://epjpv.epj.org/articles/epjpv/abs/2022/01/pv210030/pv210030.html" target="_blank"
-						rel="noopener noreferrer">EPJ Photovoltaics 17, 7</a> (2022)</li>
-				<li>M. Zinßer, M. Loy, T. Helder, A. Bauer, T. Magorian Friedlmeier, M. Powalla<br><em>Finite Element
-						Simulation of Electrical Intradevice Physics of Thin-Film Solar Cells and Its Implications on
-						the Efficiency</em><br><a href="https://ieeexplore.ieee.org/abstract/document/9698847"
-						target="_blank" rel="noopener noreferrer">IEEE Journal of Photovoltaics 12, 483-492</a> (2022)
-				</li>
-				<li>M. Denk, K. Rother, M. Zinßer, C. Petroll, K. Paetzold<br><em>Nodal cosine sine material
-						interpolation in multi objective topology optimization with the global criteria method for
-						linear elasto static heat transfer potential flow and binary cross entropy sharpening</em><br><a
-						href="https://www.cambridge.org/core/journals/proceedings-of-the-design-society/article/nodal-cosine-sine-material-interpolation-in-multi-objective-topology-optimization-with-the-global-criteria-method-for-linear-elasto-static-heat-transfer-potential-flow-and-binary-cross-entropy-sharpening/0EEC1A3841543C268A05BAA1665D4E39"
-						target="_blank" rel="noopener noreferrer">Proceedings of the Design Society, 2247-2256</a>
-					(2021)</li>
-				<li>M. Zinßer, K. Schlegel, M. Dressel, M. Scheffler<br><em>Role of non-linear effects and standing
-						waves in microwave spectroscopy: Corbino measurements on superconductors and VO2</em><br><a
-						href="https://aip.scitation.org/doi/abs/10.1063/1.5063862" target="_blank"
-						rel="noopener noreferrer">Review of Scientific Instruments 90, 034704</a> (2019)</li>
-				<li>M. Zinßer<br><em>Microwave investigations on SrTiO3-based materials at mK temperatures</em><br><a
-						href="https://elib.uni-stuttgart.de/handle/11682/10144" target="_blank"
-						rel="noopener noreferrer">Master's thesis at University of Stuttgart</a> (2018)</li>
-				<li>M. Zinßer<br><em>Frequenz- und temperaturabhängige Mikrowelleneigenschaften supraleitender Proben in
-						Corbino-Geometrie</em><br><a href="https://elib.uni-stuttgart.de/handle/11682/9684"
-						target="_blank" rel="noopener noreferrer">Bachelor's thesis at University of Stuttgart</a>
-					(2016)</li>
-			</ol>
-		</section>
+        <div class="form-row">
+          <span class="row-label">Radio Group</span>
+          <fieldset class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="field-radio" checked />
+              One
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="field-radio" />
+              Two
+            </label>
+          </fieldset>
+        </div>
 
-		<section id="contact-and-social">
-			<h2>Contact and Social</h2>
-			<ul>
-				<li>LinkedIn: <a href="https://www.linkedin.com/in/mario-zinsser/" rel="me noopener noreferrer"
-						target="_blank">Dr. Mario Zinßer</a></li>
-				<li>Instagram: <a href="https://www.instagram.com/mario.zinsser/" rel="me noopener noreferrer"
-						target="_blank">@mario.zinsser</a></li>
-				<li>X: <a href="https://x.com/MarioZinsser" rel="me noopener noreferrer"
-						target="_blank">@MarioZinsser</a></li>
-				<li>YouTube: <a href="https://www.youtube.com/channel/UCUj9yOCZuelCOo4eMALc9Tw"
-						rel="me noopener noreferrer" target="_blank">Pixel_95</a></li>
-				<li>GitHub: <a href="https://github.com/Pixel-95" rel="me noopener noreferrer"
-						target="_blank">Pixel-95</a></li>
-				<li>Email: <a href="mailto:zinsser.mario@gmail.com" rel="me noopener noreferrer"
-						target="_blank">zinsser.mario@gmail.com</a></li>
-			</ul>
-		</section>
-	</main>
+        <div class="form-row">
+          <label for="field-checkbox">Checkbox</label>
+          <label class="checkbox-control" for="field-checkbox">
+            <input id="field-checkbox" type="checkbox" checked />
+            Accept
+          </label>
+        </div>
+      </section>
 
-	<footer>
-		<p>What to put in the footer?</p>
-	</footer>
+      <details class="danger-zone">
+        <summary>Danger Zone</summary>
+        <button class="button destructive" type="button">Delete universe</button>
+      </details>
+    </article>
 
-	<script src="site.js" defer></script>
+    <article id="notifications-card" class="card notifications-card" hidden>
+      <section class="notifications" aria-label="Notifications">
+        <p class="notification success">Success: Changes were saved successfully.</p>
+        <p class="notification warning">Warning: Your session will expire in 2 minutes.</p>
+        <p class="notification destructive">Destructive: This action cannot be undone.</p>
+      </section>
+    </article>
+  </main>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const toggleButton = document.getElementById("theme-toggle");
+      const notificationsToggleButton = document.getElementById("notifications-toggle");
+      const notificationsCard = document.getElementById("notifications-card");
+      const rangeControls = document.querySelectorAll(".control-range");
+      const STORAGE_KEY = "mockup-theme";
+      const NOTIFICATIONS_STORAGE_KEY = "mockup-notifications-visibility";
+
+      const setTheme = (theme) => {
+        if (theme === "light") {
+          root.setAttribute("data-theme", "light");
+        } else {
+          root.removeAttribute("data-theme");
+        }
+
+        toggleButton.textContent = theme === "light" ? "Go to dark mode" : "Go to light mode";
+      };
+
+      const savedTheme = localStorage.getItem(STORAGE_KEY);
+      setTheme(savedTheme === "light" ? "light" : "dark");
+
+      toggleButton.addEventListener("click", () => {
+        const isLightMode = root.getAttribute("data-theme") === "light";
+        const nextTheme = isLightMode ? "dark" : "light";
+        localStorage.setItem(STORAGE_KEY, nextTheme);
+        setTheme(nextTheme);
+      });
+
+      const setNotificationsVisibility = (isVisible) => {
+        notificationsCard.hidden = !isVisible;
+        notificationsToggleButton.setAttribute("aria-expanded", isVisible ? "true" : "false");
+        notificationsToggleButton.textContent = isVisible ? "Hide Notifications" : "Show Notifications";
+      };
+
+      const savedNotificationsVisibility = localStorage.getItem(NOTIFICATIONS_STORAGE_KEY);
+      const initialNotificationsVisible = savedNotificationsVisibility === null
+        ? !notificationsCard.hidden
+        : savedNotificationsVisibility === "visible";
+      setNotificationsVisibility(initialNotificationsVisible);
+
+      notificationsToggleButton.addEventListener("click", () => {
+        const nextNotificationsVisible = notificationsCard.hidden;
+        setNotificationsVisibility(nextNotificationsVisible);
+        localStorage.setItem(NOTIFICATIONS_STORAGE_KEY, nextNotificationsVisible ? "visible" : "hidden");
+      });
+
+      const setRangePercent = (range) => {
+        const min = Number(range.min || 0);
+        const max = Number(range.max || 100);
+        const value = Number(range.value || min);
+        const span = max - min;
+        const percent = span === 0 ? 0 : ((value - min) / span) * 100;
+        range.style.setProperty("--range-percent", `${percent}%`);
+      };
+
+      rangeControls.forEach((range) => {
+        setRangePercent(range);
+        range.addEventListener("input", () => setRangePercent(range));
+      });
+    })();
+  </script>
 </body>
 
 </html>
