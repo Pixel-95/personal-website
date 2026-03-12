@@ -31,6 +31,29 @@ h3 {
   line-height: 1.25;
 }
 
+.site-nav {
+  display: flex;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+
+.site-nav a {
+  color: inherit;
+}
+
+.site-nav a[aria-current="page"] {
+  font-weight: 700;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-nav a {
+  color: inherit;
+}
+
 .skip-link {
   position: absolute;
   left: -9999px;
