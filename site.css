@@ -94,3 +94,25 @@ h3 {
 .cv-meta-row p {
   margin: 0;
 }
+
+#curriculum-vitae > ul {
+  padding: 0;
+  list-style: none;
+}
+
+#curriculum-vitae .cv-title-row {
+  cursor: pointer;
+}
+
+#curriculum-vitae .cv-title-row::after {
+  content: "▸";
+  margin-left: auto;
+}
+
+#curriculum-vitae .cv-title-row[aria-expanded="true"]::after {
+  content: "▾";
+}
+
+#curriculum-vitae article:not(.is-open) > :not(.cv-title-row) {
+  display: none;
+}
