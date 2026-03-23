@@ -64,8 +64,20 @@ const initCvAccordion = () => {
   }
 
   cvItems.forEach((item) => {
+    const panel = item.querySelector(".cv-panel");
     const metaInline = item.querySelector(".cv-meta-inline");
     const locationRow = item.querySelector(".cv-panel .cv-meta-row.is-location");
+
+    if (panel && !panel.querySelector(".cv-panel-inner")) {
+      const panelInner = document.createElement("div");
+      panelInner.className = "cv-panel-inner";
+
+      while (panel.firstChild) {
+        panelInner.append(panel.firstChild);
+      }
+
+      panel.append(panelInner);
+    }
 
     if (!metaInline || !locationRow) {
       return;
@@ -84,7 +96,8 @@ const initCvAccordion = () => {
 
     item.classList.toggle("is-open", open);
     titleRow.setAttribute("aria-expanded", String(open));
-    panel.hidden = !open;
+    panel.hidden = false;
+    panel.setAttribute("aria-hidden", String(!open));
   };
 
   cvItems.forEach((item, index) => {
