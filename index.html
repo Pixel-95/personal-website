@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -17,6 +17,11 @@
 	<meta name="twitter:description"
 		content="Software Engineer at TRIQ. CV, project portfolio, publications, and contact.">
 	<link rel="icon" type="image/png" href="favicon.png">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap"
+		rel="stylesheet">
 	<link rel="stylesheet" href="site.css">
 	<script type="application/ld+json">
   {
@@ -51,538 +56,812 @@
   </script>
 </head>
 
-<body>
+<body class="home-page">
 	<a href="#main" class="skip-link">Skip to main content</a>
-	<header>
+
+	<header class="home-header">
 		<nav class="site-nav" aria-label="Primary">
 			<a href="./" aria-current="page">Home</a>
 			<a href="projects/">Projects</a>
 			<a href="contact/">Contact</a>
 		</nav>
-		<h1>Dr. Mario Zinßer</h1>
-		<p>
-			<b>Scientist</b> and <b>Engineer</b> by training.<br>
-			<b>Creator</b> and <b>Entrepreneur</b> by conviction.
-		</p>
 
-		<p>I combine scientific rigor with product execution to turn complex ideas into AI, software, and scalable businesses.</p>
+		<section class="home-hero">
+			<div class="hero-copy">
+				<h1>Dr. Mario Zinßer</h1>
+				<p class="hero-lead">
+					<b>Scientist</b> and <b>Engineer</b> by training.<br>
+					<b>Creator</b> and <b>Entrepreneur</b> by conviction.
+				</p>
+				<p class="hero-summary">I combine scientific rigor with product execution to turn complex ideas into AI,
+					software, and scalable businesses.</p>
+				<ul class="hero-highlights">
+					<li><span class="hero-highlight-mark" aria-hidden="true"></span><span>I solve problems so that they
+							never arise again.</span></li>
+					<li><span class="hero-highlight-mark" aria-hidden="true"></span><span>Product-focused thinking and
+							solving complex challenges are at the core of my approach.</span></li>
+					<li><span class="hero-highlight-mark" aria-hidden="true"></span><span>I am a generalist with a
+							strong technical background and a passion for learning.</span></li>
+				</ul>
+			</div>
 
-		<ul>
-			<li>I solve problems so that they never arise again.</li>
-			<li>Product-focused thinking and solving complex challenges are at the core of my approach.</li>
-			<li>I am a generalist with a strong technical background and a passion for learning.</li>
-		</ul>
-
+			<div class="hero-media">
+				<span class="hero-halo hero-halo-primary" aria-hidden="true"></span>
+				<span class="hero-halo hero-halo-secondary" aria-hidden="true"></span>
+				<span class="hero-floor-glow" aria-hidden="true"></span>
+				<img src="assets/images/hero_mario.png" alt="Portrait of Dr. Mario Zinßer" class="hero-portrait"
+					fetchpriority="high">
+			</div>
+		</section>
 	</header>
 
-	<main id="main">
+	<main id="main" class="home-main">
+		<section id="curriculum-vitae" class="home-section cv-section" data-reveal aria-labelledby="cv-label">
+			<h2 id="cv-label" class="sr-only">Curriculum Vitae</h2>
 
-		<section id="curriculum-vitae">
-			<h2>Curriculum Vitae</h2>
-			<ul>
+			<ul class="cv-list">
 				<li>
-					<article>
+					<article class="cv-item">
 						<div class="cv-title-row">
-							<img src="assets/icons/icon_bag.svg" alt="work" class="profile-picture">
-							<h3>Founder and CEO of tri2max</h3>
+							<div class="cv-title-main">
+								<span class="cv-icon-badge">
+									<img src="assets/icons/icon_bag.svg" alt="work" class="profile-picture">
+								</span>
+								<div class="cv-heading-copy">
+									<h3>Founder and CEO of tri2max</h3>
+									<div class="cv-meta-inline">
+										<div class="cv-meta-row is-company">
+											<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
+											<p>tri2max</p>
+										</div>
+										<div class="cv-meta-row is-date">
+											<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
+											<p>Oktober 2025 - today</p>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
-							<p>tri2max</p>
+						<div class="cv-panel">
+							<div class="cv-meta-row is-location">
+								<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
+								<p>Weiler im Allgäu, Bayern, Deutschland</p>
+							</div>
+							<ul>
+								<li>Android and iOS app for automated triathlon training planning</li>
+							</ul>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
-							<p>Weiler im Allgäu, Bayern, Deutschland</p>
-						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
-							<p>Oktober 2025 - today</p>
-						</div>
-						<ul>
-							<li>Android and iOS app for automated triathlon training planning</li>
-						</ul>
 					</article>
 				</li>
 				<li>
-					<article>
+					<article class="cv-item">
 						<div class="cv-title-row">
-							<img src="assets/icons/icon_bag.svg" alt="work" class="profile-picture">
-							<h3>Founder and CEO of Canyon Explore</h3>
+							<div class="cv-title-main">
+								<span class="cv-icon-badge">
+									<img src="assets/icons/icon_bag.svg" alt="work" class="profile-picture">
+								</span>
+								<div class="cv-heading-copy">
+									<h3>Founder and CEO of Canyon Explore</h3>
+									<div class="cv-meta-inline">
+										<div class="cv-meta-row is-company">
+											<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
+											<p>Canyon Explore</p>
+										</div>
+										<div class="cv-meta-row is-date">
+											<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
+											<p>Juni 2025 - today</p>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
-							<p>Canyon Explore</p>
+						<div class="cv-panel">
+							<div class="cv-meta-row is-location">
+								<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
+								<p>Weiler im Allgäu, Bayern, Deutschland</p>
+							</div>
+							<ul>
+								<li>Android and iOS app for planning and managing canyoning tours</li>
+							</ul>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
-							<p>Weiler im Allgäu, Bayern, Deutschland</p>
-						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
-							<p>Juni 2025 - today</p>
-						</div>
-						<ul>
-							<li>Android and iOS app for planning and managing canyoning tours</li>
-						</ul>
 					</article>
 				</li>
 				<li>
-					<article>
+					<article class="cv-item">
 						<div class="cv-title-row">
-							<img src="assets/icons/icon_bag.svg" alt="work" class="profile-picture">
-							<h3>Canyoning Guide</h3>
+							<div class="cv-title-main">
+								<span class="cv-icon-badge">
+									<img src="assets/icons/icon_bag.svg" alt="work" class="profile-picture">
+								</span>
+								<div class="cv-heading-copy">
+									<h3>Canyoning Guide</h3>
+									<div class="cv-meta-inline">
+										<div class="cv-meta-row is-company">
+											<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
+											<p>Blue River Canyoning · Freiberuflich</p>
+										</div>
+										<div class="cv-meta-row is-date">
+											<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
+											<p>Juni 2024 - today</p>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
-							<p>Blue River Canyoning · Freiberuflich</p>
+						<div class="cv-panel">
+							<div class="cv-meta-row is-location">
+								<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
+								<p>Weiler im Allgäu, Bayern, Deutschland · Vor Ort</p>
+							</div>
+							<ul>
+								<li>Professionally trained and certified to lead canyoning tours</li>
+								<li>Guiding tours all across Europe</li>
+								<li>Ensuring the highest safety standards and managing risk for participants in dynamic
+									environments</li>
+								<li>Multi-discipline expertise in outdoor sports</li>
+								<li>Creating memorable experiences for diverse groups of adventurers.</li>
+								<li>Certified in first aid and trained to handle emergencies in remote settings</li>
+								<li>Enthusiastic about sharing the beauty of canyons and their fascinating nature with
+									people of all skill levels</li>
+								<li>Teamführung, Risikomanagement und +3 Kenntnisse</li>
+							</ul>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
-							<p>Weiler im Allgäu, Bayern, Deutschland · Vor Ort</p>
-						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
-							<p>Juni 2024 - today</p>
-						</div>
-						<ul>
-							<li>Professionally trained and certified to lead canyoning tours</li>
-							<li>Guiding tours all across Europe</li>
-							<li>Ensuring the highest safety standards and managing risk for participants in dynamic
-								environments</li>
-							<li>Multi-discipline expertise in outdoor sports</li>
-							<li>Creating memorable experiences for diverse groups of adventurers.</li>
-							<li>Certified in first aid and trained to handle emergencies in remote settings</li>
-							<li>Enthusiastic about sharing the beauty of canyons and their fascinating nature with
-								people of all skill levels</li>
-							<li>Teamführung, Risikomanagement und +3 Kenntnisse</li>
-						</ul>
 					</article>
 				</li>
 				<li>
-					<article>
+					<article class="cv-item">
 						<div class="cv-title-row">
-							<img src="assets/icons/icon_bag.svg" alt="work" class="profile-picture">
-							<h3>Head of Research and Development</h3>
+							<div class="cv-title-main">
+								<span class="cv-icon-badge">
+									<img src="assets/icons/icon_bag.svg" alt="work" class="profile-picture">
+								</span>
+								<div class="cv-heading-copy">
+									<h3>Head of Research and Development</h3>
+									<div class="cv-meta-inline">
+										<div class="cv-meta-row is-company">
+											<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
+											<p>TRIQ Triathlon · Vollzeit</p>
+										</div>
+										<div class="cv-meta-row is-date">
+											<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
+											<p>Feb. 2023-Sept. 2025</p>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
-							<p>TRIQ Triathlon · Vollzeit</p>
+						<div class="cv-panel">
+							<div class="cv-meta-row is-location">
+								<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
+								<p>Zürich, Schweiz · Hybrid</p>
+							</div>
+							<ul>
+								<li>Coordinating the development of a python-based software for triathlon training planning
+								</li>
+								<li>Directing the development and strategic integration of mathematical models to simulate
+									and understand biological dynamics and enhancing the predictive accuracy of training
+									methodologies</li>
+								<li>Orchestrating the development lifecycle from concept through implementation to testing
+									of training planning software</li>
+								<li>Guiding data science with real-world training data</li>
+								<li>Conducting cutting-edge scientific research on advanced concepts such as heart rate
+									variability analysis or threshold detection, focusing on their application and
+									implementation within the app environment</li>
+								<li>App development, ensuring the delivery of a user-friendly and robust application</li>
+								<li>Forschung und Entwicklung (F&amp;E), Modellierung und +9 Kenntnisse</li>
+							</ul>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
-							<p>Zürich, Schweiz · Hybrid</p>
-						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
-							<p>Feb. 2023-Sept. 2025</p>
-						</div>
-						<ul>
-							<li>Coordinating the development of a python-based software for triathlon training planning
-							</li>
-							<li>Directing the development and strategic integration of mathematical models to simulate
-								and understand biological dynamics and enhancing the predictive accuracy of training
-								methodologies</li>
-							<li>Orchestrating the development lifecycle from concept through implementation to testing
-								of training planning software</li>
-							<li>Guiding data science with real-world training data</li>
-							<li>Conducting cutting-edge scientific research on advanced concepts such as heart rate
-								variability analysis or threshold detection, focusing on their application and
-								implementation within the app environment</li>
-							<li>App development, ensuring the delivery of a user-friendly and robust application</li>
-							<li>Forschung und Entwicklung (F&amp;E), Modellierung und +9 Kenntnisse</li>
-						</ul>
 					</article>
 				</li>
 				<li>
-					<article>
+					<article class="cv-item">
 						<div class="cv-title-row">
-							<img src="assets/icons/icon_bag.svg" alt="work" class="profile-picture">
-							<h3>Research Scientist</h3>
+							<div class="cv-title-main">
+								<span class="cv-icon-badge">
+									<img src="assets/icons/icon_bag.svg" alt="work" class="profile-picture">
+								</span>
+								<div class="cv-heading-copy">
+									<h3>Research Scientist</h3>
+									<div class="cv-meta-inline">
+										<div class="cv-meta-row is-company">
+											<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
+											<p>Zentrum für Sonnenenergie und Wasserstoff-Forschung Baden-Württemberg ZSW · Vollzeit</p>
+										</div>
+										<div class="cv-meta-row is-date">
+											<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
+											<p>Apr. 2019-Dez. 2022 · 3 Jahre 9 Monate</p>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
-							<p>Zentrum für Sonnenenergie und Wasserstoff-Forschung Baden-Württemberg ZSW · Vollzeit</p>
+						<div class="cv-panel">
+							<div class="cv-meta-row is-location">
+								<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
+								<p>Stuttgart, Baden-Württemberg, Deutschland · Hybrid</p>
+							</div>
+							<ul>
+								<li>Development of simulation software for photovoltaic modules in C#</li>
+								<li>Multiphysics simulations from semiconductor physics to optical interferences to
+									electrical conductivity</li>
+								<li>Production of solar cells and modules in inline-production manufacturing plants</li>
+								<li>Sputtering of TCO layers</li>
+								<li>Physik, Objektorientierte Programmierung (OOP) und +3 Kenntnisse</li>
+							</ul>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
-							<p>Stuttgart, Baden-Württemberg, Deutschland · Hybrid</p>
-						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
-							<p>Apr. 2019-Dez. 2022 · 3 Jahre 9 Monate</p>
-						</div>
-						<ul>
-							<li>Development of simulation software for photovoltaic modules in C#</li>
-							<li>Multiphysics simulations from semiconductor physics to optical interferences to
-								electrical conductivity</li>
-							<li>Production of solar cells and modules in inline-production manufacturing plants</li>
-							<li>Sputtering of TCO layers</li>
-							<li>Physik, Objektorientierte Programmierung (OOP) und +3 Kenntnisse</li>
-						</ul>
 					</article>
 				</li>
 				<li>
-					<article>
+					<article class="cv-item">
 						<div class="cv-title-row">
-							<img src="assets/icons/icon_hat.svg" alt="education" class="profile-picture">
-							<h3>Visiting Researcher</h3>
+							<div class="cv-title-main">
+								<span class="cv-icon-badge">
+									<img src="assets/icons/icon_hat.svg" alt="education" class="profile-picture">
+								</span>
+								<div class="cv-heading-copy">
+									<h3>Visiting Researcher</h3>
+									<div class="cv-meta-inline">
+										<div class="cv-meta-row is-company">
+											<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
+											<p>University of Hawaii at Manoa</p>
+										</div>
+										<div class="cv-meta-row is-date">
+											<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
+											<p>Apr. 2022-Mai 2022</p>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
-							<p>University of Hawaii at Manoa</p>
+						<div class="cv-panel">
+							<div class="cv-meta-row is-location">
+								<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
+								<p>Honolulu, Hawaii, USA</p>
+							</div>
+							<ul>
+								<li>Kenntnisse: Solarzellen, Dünnschichttechnologie, +1 Kenntnis</li>
+							</ul>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
-							<p>Honolulu, Hawaii, USA</p>
-						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
-							<p>Apr. 2022-Mai 2022</p>
-						</div>
-						<ul>
-							<li>Kenntnisse: Solarzellen, Dünnschichttechnologie, +1 Kenntnis</li>
-						</ul>
 					</article>
 				</li>
 				<li>
-					<article>
+					<article class="cv-item">
 						<div class="cv-title-row">
-							<img src="assets/icons/icon_bag.svg" alt="work" class="profile-picture">
-							<h3>Research Associate</h3>
+							<div class="cv-title-main">
+								<span class="cv-icon-badge">
+									<img src="assets/icons/icon_bag.svg" alt="work" class="profile-picture">
+								</span>
+								<div class="cv-heading-copy">
+									<h3>Research Associate</h3>
+									<div class="cv-meta-inline">
+										<div class="cv-meta-row is-company">
+											<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
+											<p>Universität Stuttgart · Teilzeit</p>
+										</div>
+										<div class="cv-meta-row is-date">
+											<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
+											<p>Nov. 2014-März 2019 · 4 Jahre 5 Monate</p>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
-							<p>Universität Stuttgart · Teilzeit</p>
+						<div class="cv-panel">
+							<div class="cv-meta-row is-location">
+								<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
+								<p>Stuttgart, Baden-Württemberg, Deutschland · Vor Ort</p>
+							</div>
+							<ul>
+								<li>Conducting research in the microwave laboratory</li>
+								<li>Leading exercise groups in experimental physics and mathematics</li>
+								<li>Holding tutoring sessions</li>
+								<li>Supervising physics practical courses</li>
+								<li>Designing and grading exams in experimental physics</li>
+								<li>Mentoring of several bachelor students</li>
+							</ul>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
-							<p>Stuttgart, Baden-Württemberg, Deutschland · Vor Ort</p>
-						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
-							<p>Nov. 2014-März 2019 · 4 Jahre 5 Monate</p>
-						</div>
-						<ul>
-							<li>Conducting research in the microwave laboratory</li>
-							<li>Leading exercise groups in experimental physics and mathematics</li>
-							<li>Holding tutoring sessions</li>
-							<li>Supervising physics practical courses</li>
-							<li>Designing and grading exams in experimental physics</li>
-							<li>Mentoring of several bachelor students</li>
-						</ul>
 					</article>
 				</li>
 				<li>
-					<article>
+					<article class="cv-item">
 						<div class="cv-title-row">
-							<img src="assets/icons/icon_hand.svg" alt="charity" class="profile-picture">
-							<h3>Technischer Leiter</h3>
+							<div class="cv-title-main">
+								<span class="cv-icon-badge">
+									<img src="assets/icons/icon_hand.svg" alt="charity" class="profile-picture">
+								</span>
+								<div class="cv-heading-copy">
+									<h3>Technischer Leiter</h3>
+									<div class="cv-meta-inline">
+										<div class="cv-meta-row is-company">
+											<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
+											<p>DLRG</p>
+										</div>
+										<div class="cv-meta-row is-date">
+											<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
+											<p>März 2021-März 2023 · 2 Jahre 1 Monat</p>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
-							<p>DLRG</p>
+						<div class="cv-panel">
+							<div class="cv-meta-row is-location">
+								<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
+								<p>Katastrophenhilfe/humanitäre Hilfe</p>
+							</div>
+							<ul>
+								<li>Technische Abläufe im Ehrenamt organisiert und koordiniert.</li>
+								<li>Einsatzbereitschaft von Material und Team unterstützt.</li>
+								<li>Sicherheits- und Prozessstandards in der Ortsgruppe mitgestaltet.</li>
+							</ul>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
-							<p>Katastrophenhilfe/humanitäre Hilfe</p>
-						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
-							<p>März 2021-März 2023 · 2 Jahre 1 Monat</p>
-						</div>
-						<ul>
-							<li>Technische Abläufe im Ehrenamt organisiert und koordiniert.</li>
-							<li>Einsatzbereitschaft von Material und Team unterstützt.</li>
-							<li>Sicherheits- und Prozessstandards in der Ortsgruppe mitgestaltet.</li>
-						</ul>
 					</article>
 				</li>
 				<li>
-					<article>
+					<article class="cv-item">
 						<div class="cv-title-row">
-							<img src="assets/icons/icon_hand.svg" alt="charity" class="profile-picture">
-							<h3>Jugendleiter</h3>
+							<div class="cv-title-main">
+								<span class="cv-icon-badge">
+									<img src="assets/icons/icon_hand.svg" alt="charity" class="profile-picture">
+								</span>
+								<div class="cv-heading-copy">
+									<h3>Jugendleiter</h3>
+									<div class="cv-meta-inline">
+										<div class="cv-meta-row is-company">
+											<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
+											<p>DLRG</p>
+										</div>
+										<div class="cv-meta-row is-date">
+											<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
+											<p>März 2013-März 2021 · 8 Jahre 1 Monat</p>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
-							<p>DLRG</p>
+						<div class="cv-panel">
+							<div class="cv-meta-row is-location">
+								<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
+								<p>Katastrophenhilfe/humanitäre Hilfe</p>
+							</div>
+							<ul>
+								<li>Jugendarbeit in der Ortsgruppe langfristig begleitet.</li>
+								<li>Aktivitäten, Trainings und Ausflüge mitgeplant und umgesetzt.</li>
+								<li>Verantwortung für Betreuung und Entwicklung junger Mitglieder übernommen.</li>
+							</ul>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
-							<p>Katastrophenhilfe/humanitäre Hilfe</p>
-						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
-							<p>März 2013-März 2021 · 8 Jahre 1 Monat</p>
-						</div>
-						<ul>
-							<li>Jugendarbeit in der Ortsgruppe langfristig begleitet.</li>
-							<li>Aktivitäten, Trainings und Ausflüge mitgeplant und umgesetzt.</li>
-							<li>Verantwortung für Betreuung und Entwicklung junger Mitglieder übernommen.</li>
-						</ul>
 					</article>
 				</li>
 				<li>
-					<article>
+					<article class="cv-item">
 						<div class="cv-title-row">
-							<img src="assets/icons/icon_hand.svg" alt="charity" class="profile-picture">
-							<h3>Schwimmtrainer</h3>
+							<div class="cv-title-main">
+								<span class="cv-icon-badge">
+									<img src="assets/icons/icon_hand.svg" alt="charity" class="profile-picture">
+								</span>
+								<div class="cv-heading-copy">
+									<h3>Schwimmtrainer</h3>
+									<div class="cv-meta-inline">
+										<div class="cv-meta-row is-company">
+											<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
+											<p>DLRG</p>
+										</div>
+										<div class="cv-meta-row is-date">
+											<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
+											<p>März 2015-Feb. 2024 · 9 Jahre</p>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
-							<p>DLRG</p>
+						<div class="cv-panel">
+							<div class="cv-meta-row is-location">
+								<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
+								<p>Kinder</p>
+							</div>
+							<ul>
+								<li>Schwimmtraining für Kinder regelmäßig durchgeführt.</li>
+								<li>Technik, Sicherheit im Wasser und Ausdauer altersgerecht vermittelt.</li>
+								<li>Lernfortschritte dokumentiert und individuell begleitet.</li>
+							</ul>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
-							<p>Kinder</p>
-						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
-							<p>März 2015-Feb. 2024 · 9 Jahre</p>
-						</div>
-						<ul>
-							<li>Schwimmtraining für Kinder regelmäßig durchgeführt.</li>
-							<li>Technik, Sicherheit im Wasser und Ausdauer altersgerecht vermittelt.</li>
-							<li>Lernfortschritte dokumentiert und individuell begleitet.</li>
-						</ul>
 					</article>
 				</li>
 				<li>
-					<article>
+					<article class="cv-item">
 						<div class="cv-title-row">
-							<img src="assets/icons/icon_hand.svg" alt="charity" class="profile-picture">
-							<h3>Webmaster</h3>
+							<div class="cv-title-main">
+								<span class="cv-icon-badge">
+									<img src="assets/icons/icon_hand.svg" alt="charity" class="profile-picture">
+								</span>
+								<div class="cv-heading-copy">
+									<h3>Webmaster</h3>
+									<div class="cv-meta-inline">
+										<div class="cv-meta-row is-company">
+											<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
+											<p>DLRG</p>
+										</div>
+										<div class="cv-meta-row is-date">
+											<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
+											<p>März 2014-Heute · 12 Jahre</p>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
-							<p>DLRG</p>
+						<div class="cv-panel">
+							<div class="cv-meta-row is-location">
+								<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
+								<p>Katastrophenhilfe/humanitäre Hilfe</p>
+							</div>
+							<ul>
+								<li>Webseiteninhalte gepflegt und technisch betreut.</li>
+								<li>Informationen für Mitglieder und Öffentlichkeit aktuell gehalten.</li>
+								<li>Digitale Kommunikation der Ortsgruppe unterstützt.</li>
+							</ul>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
-							<p>Katastrophenhilfe/humanitäre Hilfe</p>
-						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
-							<p>März 2014-Heute · 12 Jahre</p>
-						</div>
-						<ul>
-							<li>Webseiteninhalte gepflegt und technisch betreut.</li>
-							<li>Informationen für Mitglieder und Öffentlichkeit aktuell gehalten.</li>
-							<li>Digitale Kommunikation der Ortsgruppe unterstützt.</li>
-						</ul>
 					</article>
 				</li>
 				<li>
-					<article>
+					<article class="cv-item">
 						<div class="cv-title-row">
-							<img src="assets/icons/icon_hat.svg" alt="education" class="profile-picture">
-							<h3>Dr.-Ing., Elektrotechnik und Informationstechnik</h3>
+							<div class="cv-title-main">
+								<span class="cv-icon-badge">
+									<img src="assets/icons/icon_hat.svg" alt="education" class="profile-picture">
+								</span>
+								<div class="cv-heading-copy">
+									<h3>Dr.-Ing., Elektrotechnik und Informationstechnik</h3>
+									<div class="cv-meta-inline">
+										<div class="cv-meta-row is-company">
+											<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
+											<p>Karlsruher Institut für Technologie (KIT)</p>
+										</div>
+										<div class="cv-meta-row is-date">
+											<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
+											<p>Apr. 2019-Dez. 2022</p>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
-							<p>Karlsruher Institut für Technologie (KIT)</p>
+						<div class="cv-panel">
+							<div class="cv-meta-row is-location">
+								<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
+								<p>Karlsruhe, Germany</p>
+							</div>
+							<ul>
+								<li>Dissertation: "Multiphysics Simulation of Thin-Film Photovoltaic Modules"</li>
+								<li>Note: Summa cum laude (1,0)</li>
+							</ul>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
-							<p>Karlsruhe, Germany</p>
-						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
-							<p>Apr. 2019-Dez. 2022</p>
-						</div>
-						<ul>
-							<li>Dissertation: "Multiphysics Simulation of Thin-Film Photovoltaic Modules"</li>
-							<li>Note: Summa cum laude (1,0)</li>
-						</ul>
 					</article>
 				</li>
 				<li>
-					<article>
+					<article class="cv-item">
 						<div class="cv-title-row">
-							<img src="assets/icons/icon_hat.svg" alt="education" class="profile-picture">
-							<h3>Apprenticeship / Ausbildung, Canyoning Guide / Schluchtenführer</h3>
+							<div class="cv-title-main">
+								<span class="cv-icon-badge">
+									<img src="assets/icons/icon_hat.svg" alt="education" class="profile-picture">
+								</span>
+								<div class="cv-heading-copy">
+									<h3>Apprenticeship / Ausbildung, Canyoning Guide / Schluchtenführer</h3>
+									<div class="cv-meta-inline">
+										<div class="cv-meta-row is-company">
+											<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
+											<p>Bergsportführerverband Salzburg</p>
+										</div>
+										<div class="cv-meta-row is-date">
+											<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
+											<p>Mai 2024-Sept. 2024</p>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
-							<p>Bergsportführerverband Salzburg</p>
+						<div class="cv-panel">
+							<div class="cv-meta-row is-location">
+								<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
+								<p>Salzburg, Austria</p>
+							</div>
+							<ul>
+								<li>Rope and Knot Techniques</li>
+								<li>Rescue Techniques</li>
+								<li>Anchor Construction</li>
+								<li>Navigation</li>
+								<li>Leadership Techniques</li>
+								<li>Tour Planning and Guidance</li>
+								<li>Topography and Geology of Canyons</li>
+								<li>Meteorology</li>
+								<li>Hazard and Accident Knowledge</li>
+								<li>Hydrology and Water Dynamics</li>
+								<li>Whitewater Swimming</li>
+								<li>Jumping and Sliding Techniques</li>
+								<li>Kenntnisse: Leadership, Technische Hilfeleistung, +4 Kenntnisse</li>
+							</ul>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
-							<p>Salzburg, Austria</p>
-						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
-							<p>Mai 2024-Sept. 2024</p>
-						</div>
-						<ul>
-							<li>Rope and Knot Techniques</li>
-							<li>Rescue Techniques</li>
-							<li>Anchor Construction</li>
-							<li>Navigation</li>
-							<li>Leadership Techniques</li>
-							<li>Tour Planning and Guidance</li>
-							<li>Topography and Geology of Canyons</li>
-							<li>Meteorology</li>
-							<li>Hazard and Accident Knowledge</li>
-							<li>Hydrology and Water Dynamics</li>
-							<li>Whitewater Swimming</li>
-							<li>Jumping and Sliding Techniques</li>
-							<li>Kenntnisse: Leadership, Technische Hilfeleistung, +4 Kenntnisse</li>
-						</ul>
 					</article>
 				</li>
 				<li>
-					<article>
+					<article class="cv-item">
 						<div class="cv-title-row">
-							<img src="assets/icons/icon_hat.svg" alt="education" class="profile-picture">
-							<h3>Apprenticeship / Ausbildung, Paramedic / Rettungssanitäter</h3>
+							<div class="cv-title-main">
+								<span class="cv-icon-badge">
+									<img src="assets/icons/icon_hat.svg" alt="education" class="profile-picture">
+								</span>
+								<div class="cv-heading-copy">
+									<h3>Apprenticeship / Ausbildung, Paramedic / Rettungssanitäter</h3>
+									<div class="cv-meta-inline">
+										<div class="cv-meta-row is-company">
+											<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
+											<p>Deutsches Rotes Kreuz Landesschule Baden-Württemberg Standort Ulm</p>
+										</div>
+										<div class="cv-meta-row is-date">
+											<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
+											<p>Feb. 2019-Dez. 2019</p>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
-							<p>Deutsches Rotes Kreuz Landesschule Baden-Württemberg Standort Ulm</p>
+						<div class="cv-panel">
+							<div class="cv-meta-row is-location">
+								<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
+								<p>Ellwangen, Germany</p>
+							</div>
+							<ul>
+								<li>Aktivitäten und Verbände: Rescue Service, Emergency Room, Anesthesia</li>
+								<li>Kenntnisse: Notfallmedizin, Notfallversorgung, +4 Kenntnisse</li>
+							</ul>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
-							<p>Ellwangen, Germany</p>
-						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
-							<p>Feb. 2019-Dez. 2019</p>
-						</div>
-						<ul>
-							<li>Aktivitäten und Verbände: Rescue Service, Emergency Room, Anesthesia</li>
-							<li>Kenntnisse: Notfallmedizin, Notfallversorgung, +4 Kenntnisse</li>
-						</ul>
 					</article>
 				</li>
 				<li>
-					<article>
+					<article class="cv-item">
 						<div class="cv-title-row">
-							<img src="assets/icons/icon_hat.svg" alt="education" class="profile-picture">
-							<h3>Master of Science - MS, Physics</h3>
+							<div class="cv-title-main">
+								<span class="cv-icon-badge">
+									<img src="assets/icons/icon_hat.svg" alt="education" class="profile-picture">
+								</span>
+								<div class="cv-heading-copy">
+									<h3>Master of Science - MS, Physics</h3>
+									<div class="cv-meta-inline">
+										<div class="cv-meta-row is-company">
+											<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
+											<p>Universität Stuttgart</p>
+										</div>
+										<div class="cv-meta-row is-date">
+											<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
+											<p>Okt. 2016-Sept. 2018</p>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
-							<p>Universität Stuttgart</p>
+						<div class="cv-panel">
+							<div class="cv-meta-row is-location">
+								<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
+								<p>Stuttgart, Germany</p>
+							</div>
+							<ul>
+								<li>Master thesis: ""</li>
+								<li>Note: 1,0</li>
+							</ul>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
-							<p>Stuttgart, Germany</p>
-						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
-							<p>Okt. 2016-Sept. 2018</p>
-						</div>
-						<ul>
-							<li>Master thesis: ""</li>
-							<li>Note: 1,0</li>
-						</ul>
 					</article>
 				</li>
 				<li>
-					<article>
+					<article class="cv-item">
 						<div class="cv-title-row">
-							<img src="assets/icons/icon_hat.svg" alt="education" class="profile-picture">
-							<h3>Visiting Researcher</h3>
+							<div class="cv-title-main">
+								<span class="cv-icon-badge">
+									<img src="assets/icons/icon_hat.svg" alt="education" class="profile-picture">
+								</span>
+								<div class="cv-heading-copy">
+									<h3>Visiting Researcher</h3>
+									<div class="cv-meta-inline">
+										<div class="cv-meta-row is-company">
+											<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
+											<p>Simon Fraser University</p>
+										</div>
+										<div class="cv-meta-row is-date">
+											<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
+											<p>Okt. 2017-Okt. 2017</p>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
-							<p>Simon Fraser University</p>
+						<div class="cv-panel">
+							<div class="cv-meta-row is-location">
+								<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
+								<p>Vancouver, Canada</p>
+							</div>
+							<ul>
+								<li>Kenntnisse: Mikrowellentechnik, Matlab, +2 Kenntnisse</li>
+							</ul>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
-							<p>Vancouver, Canada</p>
-						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
-							<p>Okt. 2017-Okt. 2017</p>
-						</div>
-						<ul>
-							<li>Kenntnisse: Mikrowellentechnik, Matlab, +2 Kenntnisse</li>
-						</ul>
 					</article>
 				</li>
 				<li>
-					<article>
+					<article class="cv-item">
 						<div class="cv-title-row">
-							<img src="assets/icons/icon_hat.svg" alt="education" class="profile-picture">
-							<h3>Bachelor of Science - BS, Physics</h3>
+							<div class="cv-title-main">
+								<span class="cv-icon-badge">
+									<img src="assets/icons/icon_hat.svg" alt="education" class="profile-picture">
+								</span>
+								<div class="cv-heading-copy">
+									<h3>Bachelor of Science - BS, Physics</h3>
+									<div class="cv-meta-inline">
+										<div class="cv-meta-row is-company">
+											<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
+											<p>Universität Stuttgart</p>
+										</div>
+										<div class="cv-meta-row is-date">
+											<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
+											<p>Okt. 2013-Sept. 2016</p>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_house.svg" alt="house" class="cv-entry-picture">
-							<p>Universität Stuttgart</p>
+						<div class="cv-panel">
+							<div class="cv-meta-row is-location">
+								<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
+								<p>Stuttgart, Germany</p>
+							</div>
+							<ul>
+								<li>Note: 1,6</li>
+							</ul>
 						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_pin.svg" alt="pin" class="cv-entry-picture">
-							<p>Stuttgart, Germany</p>
-						</div>
-						<div class="cv-meta-row">
-							<img src="assets/icons/icon_cal.svg" alt="calendar" class="cv-entry-picture">
-							<p>Okt. 2013-Sept. 2016</p>
-						</div>
-						<ul>
-							<li>Note: 1,6</li>
-						</ul>
 					</article>
 				</li>
 			</ul>
 		</section>
 
-		<section id="testimonials">
-			<h2>Testimonials</h2>
-			<blockquote>
-				<cite>Mario is a person, that ... I enjoyed working with him. Or maybe not?</cite>
-				<p>Hans Peter, CEO, MyCompany</p>
-			</blockquote>
-			<blockquote>
-				<cite>I worked with Mario and maybe he was cool</cite>
-				<p>Peter Schreiner, CTO, AnotherCompany</p>
-			</blockquote>
-		</section>
+		<div class="home-secondary-stack">
+			<section id="tech-stack" class="home-section stack-band-section" data-reveal aria-labelledby="tech-stack-label">
+				<h2 id="tech-stack-label" class="sr-only">Tech Stack</h2>
+				<div class="stack-marquee" aria-label="Tech Stack">
+					<div class="stack-marquee-inner">
+						<ul class="stack-track">
+							<li><img src="assets/images/placeholder_image.png" alt="" class="stack-avatar"><span>Python</span></li>
+							<li><img src="assets/images/placeholder_image.png" alt="" class="stack-avatar"><span>JavaScript / TypeScript</span></li>
+							<li><img src="assets/images/placeholder_image.png" alt="" class="stack-avatar"><span>C#</span></li>
+							<li><img src="assets/images/placeholder_image.png" alt="" class="stack-avatar"><span>Supabase</span></li>
+							<li><img src="assets/images/placeholder_image.png" alt="" class="stack-avatar"><span>ChatGPT</span></li>
+							<li><img src="assets/images/placeholder_image.png" alt="" class="stack-avatar"><span>Google Gemini</span></li>
+							<li><img src="assets/images/placeholder_image.png" alt="" class="stack-avatar"><span>Claude</span></li>
+							<li><img src="assets/images/placeholder_image.png" alt="" class="stack-avatar"><span>Matlab</span></li>
+							<li><img src="assets/images/placeholder_image.png" alt="" class="stack-avatar"><span>LabView</span></li>
+							<li><img src="assets/images/placeholder_image.png" alt="" class="stack-avatar"><span>HTML</span></li>
+							<li><img src="assets/images/placeholder_image.png" alt="" class="stack-avatar"><span>Android (Java/Kotlin)</span></li>
+							<li><img src="assets/images/placeholder_image.png" alt="" class="stack-avatar"><span>iOS (Swift)</span></li>
+						</ul>
+						<ul class="stack-track" aria-hidden="true">
+							<li><img src="assets/images/placeholder_image.png" alt="" class="stack-avatar"><span>Python</span></li>
+							<li><img src="assets/images/placeholder_image.png" alt="" class="stack-avatar"><span>JavaScript / TypeScript</span></li>
+							<li><img src="assets/images/placeholder_image.png" alt="" class="stack-avatar"><span>C#</span></li>
+							<li><img src="assets/images/placeholder_image.png" alt="" class="stack-avatar"><span>Supabase</span></li>
+							<li><img src="assets/images/placeholder_image.png" alt="" class="stack-avatar"><span>ChatGPT</span></li>
+							<li><img src="assets/images/placeholder_image.png" alt="" class="stack-avatar"><span>Google Gemini</span></li>
+							<li><img src="assets/images/placeholder_image.png" alt="" class="stack-avatar"><span>Claude</span></li>
+							<li><img src="assets/images/placeholder_image.png" alt="" class="stack-avatar"><span>Matlab</span></li>
+							<li><img src="assets/images/placeholder_image.png" alt="" class="stack-avatar"><span>LabView</span></li>
+							<li><img src="assets/images/placeholder_image.png" alt="" class="stack-avatar"><span>HTML</span></li>
+							<li><img src="assets/images/placeholder_image.png" alt="" class="stack-avatar"><span>Android (Java/Kotlin)</span></li>
+							<li><img src="assets/images/placeholder_image.png" alt="" class="stack-avatar"><span>iOS (Swift)</span></li>
+						</ul>
+					</div>
+				</div>
+			</section>
 
-		<section id="tech-stack">
-			<h2>Tech Stack</h2>
-			<ul>
-				<li>Python</li>
-				<li>JavaScript / TypeScript</li>
-				<li>C#</li>
-				<li>Supabase</li>
-				<li>ChatGPT</li>
-				<li>Google Gemini</li>
-				<li>Claude</li>
-				<li>Matlab</li>
-				<li>LabView</li>
-				<li>HTML</li>
-				<li>Android (Java/Kotlin)</li>
-				<li>iOS (Swift)</li>
-			</ul>
-		</section>
+			<section id="testimonials" class="home-section testimonials-section" data-reveal aria-labelledby="testimonials-label">
+				<h2 id="testimonials-label" class="sr-only">Testimonials</h2>
+				<div class="testimonial-layout">
+					<blockquote class="quote-bubble quote-bubble-primary">
+						<cite>Mario is a person, that ... I enjoyed working with him. Or maybe not?</cite>
+						<p>Hans Peter, CEO, MyCompany</p>
+					</blockquote>
+					<blockquote class="quote-bubble quote-bubble-secondary">
+						<cite>I worked with Mario and maybe he was cool</cite>
+						<p>Peter Schreiner, CTO, AnotherCompany</p>
+					</blockquote>
+				</div>
+			</section>
 
-		<section id="sports">
-			<h2>Sports</h2>
-			<ul>
-				<li>
-					Triathlon
-					<p>
-						This is some text describing my passion for triathlon.
-						My best races were ... I am particularly proud of ... I have been training for triathlon for ...
-						years and have completed ...
-					</p>
-				</li>
-				<li>
-					Canyoning
-					<p>This is some text describing my passion for canyoning.</p>
-				</li>
-				<li>
-					Mountaineering
-					<p>This is some text describing my passion for mountaineering.</p>
-				</li>
-			</ul>
-		</section>
+			<section id="sports" class="home-section sports-section" data-reveal aria-labelledby="sports-title">
+				<div class="section-heading section-heading-quiet">
+					<h2 id="sports-title">Sports</h2>
+				</div>
+				<div class="sports-story" data-sports>
+					<div class="sports-sticky-shell">
+						<div class="sports-nav" role="group" aria-label="Sports">
+							<button type="button" class="sports-nav-button is-active" data-sport-trigger="0" aria-pressed="true">Triathlon</button>
+							<button type="button" class="sports-nav-button" data-sport-trigger="1" aria-pressed="false">Canyoning</button>
+							<button type="button" class="sports-nav-button" data-sport-trigger="2" aria-pressed="false">Mountaineering</button>
+						</div>
 
+						<div class="sports-panels" data-sport-panels>
+							<article class="sport-stage sport-stage-triathlon is-active" data-sport-panel="0">
+								<div class="sport-stage-copy">
+									<span class="sport-stage-index" aria-hidden="true">01</span>
+									<h3>Triathlon</h3>
+									<p>
+										This is some text describing my passion for triathlon.
+										My best races were ... I am particularly proud of ... I have been training for triathlon for ...
+										years and have completed ...
+									</p>
+								</div>
+								<div class="sport-stage-media">
+									<div class="sport-stage-main-media">
+										<img src="assets/images/triathlon/11611_NE2_02896.jpeg" alt="Triathlon" loading="eager">
+									</div>
+									<div class="sport-stage-detail-grid" aria-hidden="true">
+										<div class="sport-stage-detail-media">
+											<img src="assets/images/triathlon/PXL_20230903_120748970~4.jpg" alt="" loading="eager">
+										</div>
+										<div class="sport-stage-detail-media">
+											<img src="assets/images/triathlon/IronmanLanzaroteFinishLine.jpg" alt="" loading="eager">
+										</div>
+									</div>
+								</div>
+							</article>
+
+							<article class="sport-stage sport-stage-canyoning" data-sport-panel="1">
+								<div class="sport-stage-copy">
+									<span class="sport-stage-index" aria-hidden="true">02</span>
+									<h3>Canyoning</h3>
+									<p>This is some text describing my passion for canyoning.</p>
+								</div>
+								<div class="sport-stage-media">
+									<div class="sport-stage-main-media">
+										<img src="assets/images/canyoning/IMG_5423~3.jpg" alt="Canyoning" loading="eager">
+									</div>
+									<div class="sport-stage-detail-grid" aria-hidden="true">
+										<div class="sport-stage-detail-media">
+											<img src="assets/images/canyoning/IMG_6490~2.jpg" alt="" loading="eager">
+										</div>
+										<div class="sport-stage-detail-media">
+											<img src="assets/images/canyoning/IMG_6394~2.jpg" alt="" loading="eager">
+										</div>
+									</div>
+								</div>
+							</article>
+
+							<article class="sport-stage sport-stage-mountaineering" data-sport-panel="2">
+								<div class="sport-stage-copy">
+									<span class="sport-stage-index" aria-hidden="true">03</span>
+									<h3>Mountaineering</h3>
+									<p>This is some text describing my passion for mountaineering.</p>
+								</div>
+								<div class="sport-stage-media">
+									<div class="sport-stage-main-media">
+										<img src="assets/images/mountaineering/IMG-20240826-WA0108~2.jpg" alt="Mountaineering" loading="eager">
+									</div>
+									<div class="sport-stage-detail-grid" aria-hidden="true">
+										<div class="sport-stage-detail-media">
+											<img src="assets/images/mountaineering/PXL_20240823_102557749~2.jpg" alt="" loading="eager">
+										</div>
+										<div class="sport-stage-detail-media">
+											<img src="assets/images/mountaineering/PXL_20240715_070917697~3.jpg" alt="" loading="eager">
+										</div>
+									</div>
+								</div>
+							</article>
+						</div>
+
+						<div class="sports-progress" aria-hidden="true">
+							<span class="sports-progress-dot is-active"></span>
+							<span class="sports-progress-dot"></span>
+							<span class="sports-progress-dot"></span>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
 	</main>
 
-	<footer>
+	<footer class="site-footer">
 		<nav class="footer-nav" aria-label="Legal">
 			<a href="imprint/">Imprint</a>
 			<a href="privacy/">Privacy</a>
