@@ -37,40 +37,23 @@ const createFrameScheduler = (callback) => {
   };
 };
 
-const initRevealObserver = () => {
-  const revealElements = Array.from(document.querySelectorAll("[data-reveal]"));
+const initTechStackMarquee = () => {
+  const marqueeInner = document.querySelector("#tech-stack .stack-marquee-inner");
+  const sourceTrack = marqueeInner?.querySelector(".stack-track");
 
-  if (!revealElements.length) {
+  if (!marqueeInner || !sourceTrack) {
     return;
   }
 
-  revealElements.forEach((element, index) => {
-    element.style.setProperty("--reveal-delay", `${Math.min(index * 90, 320)}ms`);
-  });
+  const existingClone = marqueeInner.querySelector('.stack-track[aria-hidden="true"]');
 
-  if (window.location.hash || prefersReducedMotion.matches || !("IntersectionObserver" in window)) {
-    revealElements.forEach((element) => element.classList.add("is-visible"));
-    return;
+  if (!existingClone) {
+    const clonedTrack = sourceTrack.cloneNode(true);
+    clonedTrack.setAttribute("aria-hidden", "true");
+    marqueeInner.append(clonedTrack);
   }
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) {
-          return;
-        }
-
-        entry.target.classList.add("is-visible");
-        observer.unobserve(entry.target);
-      });
-    },
-    {
-      rootMargin: "0px 0px -10% 0px",
-      threshold: 0.15,
-    },
-  );
-
-  revealElements.forEach((element) => observer.observe(element));
+  marqueeInner.classList.add("is-ready");
 };
 
 const initCvAccordion = () => {
@@ -79,6 +62,17 @@ const initCvAccordion = () => {
   if (!cvItems.length) {
     return;
   }
+
+  cvItems.forEach((item) => {
+    const metaInline = item.querySelector(".cv-meta-inline");
+    const locationRow = item.querySelector(".cv-panel .cv-meta-row.is-location");
+
+    if (!metaInline || !locationRow) {
+      return;
+    }
+
+    metaInline.append(locationRow);
+  });
 
   const setOpen = (item, open) => {
     const titleRow = item.querySelector(".cv-title-row");
@@ -176,6 +170,6 @@ const initCvGlowState = () => {
   addMediaChangeListener(mobileQuery, scheduleUpdate);
 };
 
-initRevealObserver();
+initTechStackMarquee();
 initCvAccordion();
 initCvGlowState();

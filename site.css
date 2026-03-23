@@ -165,25 +165,6 @@ section {
   margin: 0;
 }
 
-[data-reveal] {
-  opacity: 1;
-  transform: none;
-}
-
-.js-enhanced [data-reveal] {
-  opacity: 0;
-  transform: translateY(2rem);
-  transition:
-    opacity 900ms var(--ease-premium),
-    transform 900ms var(--ease-premium);
-  transition-delay: var(--reveal-delay, 0s);
-}
-
-.js-enhanced [data-reveal].is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 body:not(.home-page) header,
 body:not(.home-page) main,
 body:not(.home-page) footer {
@@ -671,8 +652,8 @@ body:not(.home-page) footer {
 }
 
 .profile-picture {
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1.75rem;
+  height: 1.75rem;
   filter: invert(1) opacity(0.72);
 }
 
@@ -688,15 +669,15 @@ body:not(.home-page) footer {
 }
 
 .cv-meta-inline {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem 0.9rem;
+  display: grid;
+  gap: 0.45rem;
 }
 
 .cv-meta-row {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.52rem;
+  display: grid;
+  grid-template-columns: 1rem minmax(0, 1fr);
+  align-items: start;
+  column-gap: 0.52rem;
   min-width: 0;
   font-size: 0.92rem;
   color: var(--text-tertiary);
@@ -734,6 +715,10 @@ body:not(.home-page) footer {
   padding-left: 1.2rem;
 }
 
+.cv-panel > ul:first-child {
+  margin-top: 0.35rem;
+}
+
 .stack-band-section {
   position: relative;
   padding-top: 0.35rem;
@@ -759,8 +744,11 @@ body:not(.home-page) footer {
   display: flex;
   width: max-content;
   gap: 1rem;
-  animation: marquee-scroll 34s linear infinite;
   will-change: transform;
+}
+
+.js-enhanced .stack-marquee-inner.is-ready {
+  animation: marquee-scroll 34s linear infinite;
 }
 
 .stack-track {
@@ -786,10 +774,11 @@ body:not(.home-page) footer {
 .stack-avatar {
   width: 1.6rem;
   height: 1.6rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
-  object-fit: cover;
+  flex: 0 0 1.6rem;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  object-fit: contain;
 }
 
 .stack-marquee:hover .stack-marquee-inner {
@@ -1181,7 +1170,7 @@ body:not(.home-page) footer {
   }
 
   .cv-meta-inline {
-    gap: 0.45rem 0.75rem;
+    gap: 0.45rem;
   }
 
   .cv-panel {
@@ -1223,17 +1212,13 @@ body:not(.home-page) footer {
     scroll-behavior: auto !important;
   }
 
-  .js-enhanced [data-reveal] {
-    opacity: 1;
-    transform: none;
-  }
-
   .stack-marquee {
     mask-image: none;
     overflow: visible;
   }
 
-  .stack-marquee-inner {
+  .stack-marquee-inner,
+  .js-enhanced .stack-marquee-inner.is-ready {
     display: block;
     width: auto;
     animation: none;
@@ -1335,11 +1320,19 @@ footer {
 
 .hero-media::after {
   inset: auto 12% 0 12%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.32), transparent);
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.18) 14%,
+    rgba(255, 142, 96, 0.92) 50%,
+    rgba(255, 255, 255, 0.18) 86%,
+    transparent
+  );
   box-shadow:
-    0 0 28px rgba(255, 111, 70, 0.18),
-    0 0 46px rgba(255, 255, 255, 0.05);
+    0 0 22px rgba(255, 111, 70, 0.36),
+    0 0 44px rgba(255, 111, 70, 0.2),
+    0 0 62px rgba(255, 255, 255, 0.08);
 }
 
 .hero-halo-primary {
