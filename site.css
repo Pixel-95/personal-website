@@ -288,7 +288,7 @@ body:not(.home-page) footer {
 
 .hero-copy {
   display: grid;
-  gap: 1.65rem;
+  gap: 2.0rem;
   align-content: center;
   max-width: 39rem;
 }
@@ -1128,6 +1128,10 @@ body:not(.home-page) footer {
     row-gap: 0;
   }
 
+  .home-main {
+    padding-top: 4.0rem;
+  }
+
   .home-page .site-nav {
     margin: 0 0 2.4rem;
   }
@@ -1254,7 +1258,7 @@ body:not(.home-page) footer {
   }
 
   .hero-copy {
-    gap: 1.4rem;
+    gap: 1.8rem;
   }
 
   .cv-title-row {
@@ -1502,7 +1506,7 @@ footer {
 
 @media (min-width: 67.5625rem) {
   .hero-copy {
-    gap: clamp(1.2rem, 2svh, 1.6rem);
+    gap: clamp(1.5rem, 2.5svh, 2.0rem);
     padding-bottom: clamp(1.75rem, 4.5svh, 3.1rem);
   }
 
@@ -1945,7 +1949,7 @@ footer {
 
   .sport-card-copy {
     max-width: none;
-    padding-top: 0.75rem;
+    padding-top: 1rem;
   }
 
   .stack-marquee {
