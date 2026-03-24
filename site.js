@@ -56,6 +56,169 @@ const initTechStackMarquee = () => {
   marqueeInner.classList.add("is-ready");
 };
 
+const CV_ENTRY_TYPES = {
+  work: {
+    iconSrc: "assets/icons/icon_house_header.svg",
+    iconAlt: "work",
+  },
+  education: {
+    iconSrc: "assets/icons/icon_hat.svg",
+    iconAlt: "education",
+  },
+  volunteer: {
+    iconSrc: "assets/icons/icon_hand.svg",
+    iconAlt: "charity",
+  },
+};
+
+const splitCvDataList = (value, separator) =>
+  (value ?? "")
+    .split(separator)
+    .map((entry) => entry.trim())
+    .filter(Boolean);
+
+const createCvImage = (src, alt, className) => {
+  const image = document.createElement("img");
+  image.src = src;
+  image.alt = alt;
+  image.className = className;
+  return image;
+};
+
+const appendClonedNodes = (target, source) => {
+  Array.from(source.childNodes).forEach((node) => {
+    target.append(node.cloneNode(true));
+  });
+};
+
+const appendCvText = (element, value) => {
+  const lines = splitCvDataList(value, "|");
+
+  lines.forEach((line, index) => {
+    if (index) {
+      element.append(document.createElement("br"));
+    }
+
+    element.append(document.createTextNode(line));
+  });
+};
+
+const appendCvContent = (target, value, source) => {
+  if (source) {
+    appendClonedNodes(target, source);
+    return;
+  }
+
+  appendCvText(target, value);
+};
+
+const createCvMetaRow = (kind, iconSrc, iconAlt, value, source) => {
+  const row = document.createElement("div");
+  row.className = `cv-meta-row is-${kind}`;
+  row.append(createCvImage(iconSrc, iconAlt, "cv-entry-picture"));
+
+  const copy = document.createElement("p");
+  appendCvContent(copy, value, source);
+  row.append(copy);
+
+  return row;
+};
+
+const renderCvItem = (item) => {
+  if (item.querySelector(".cv-title-row") || item.querySelector(".cv-panel")) {
+    return;
+  }
+
+  const entryType = CV_ENTRY_TYPES[item.dataset.entryType] ?? CV_ENTRY_TYPES.work;
+  const title = item.dataset.title?.trim() ?? "";
+  const company = item.dataset.company?.trim() ?? "";
+  const date = item.dataset.date?.trim() ?? "";
+  const location = item.dataset.location?.trim() ?? "";
+  const titleSource = item.querySelector(":scope > .cv-item-title");
+  const companySource = item.querySelector(":scope > .cv-item-company");
+  const dateSource = item.querySelector(":scope > .cv-item-date");
+  const locationSource = item.querySelector(":scope > .cv-item-location");
+  const detailSource = item.querySelector(":scope > .cv-item-details");
+  const details = detailSource
+    ? Array.from(detailSource.querySelectorAll(":scope > li"))
+        .map((detailItem) => detailItem.cloneNode(true))
+    : splitCvDataList(item.dataset.details, "||");
+
+  const titleRow = document.createElement("div");
+  titleRow.className = "cv-title-row";
+
+  const titleMain = document.createElement("div");
+  titleMain.className = "cv-title-main";
+
+  const iconBadge = document.createElement("span");
+  iconBadge.className = "cv-icon-badge";
+  iconBadge.append(createCvImage(entryType.iconSrc, entryType.iconAlt, "profile-picture"));
+
+  const headingCopy = document.createElement("div");
+  headingCopy.className = "cv-heading-copy";
+
+  const heading = document.createElement("h3");
+  appendCvContent(heading, title, titleSource);
+  headingCopy.append(heading);
+
+  const metaInline = document.createElement("div");
+  metaInline.className = "cv-meta-inline";
+
+  if (company || companySource) {
+    metaInline.append(createCvMetaRow("company", "assets/icons/icon_house.svg", "house", company, companySource));
+  }
+
+  if (date || dateSource) {
+    metaInline.append(createCvMetaRow("date", "assets/icons/icon_cal.svg", "calendar", date, dateSource));
+  }
+
+  if (metaInline.childElementCount) {
+    headingCopy.append(metaInline);
+  }
+
+  titleMain.append(iconBadge, headingCopy);
+  titleRow.append(titleMain);
+
+  const panel = document.createElement("div");
+  panel.className = "cv-panel";
+
+  if (location || locationSource) {
+    panel.append(createCvMetaRow("location", "assets/icons/icon_pin.svg", "pin", location, locationSource));
+  }
+
+  if (details.length) {
+    const detailList = document.createElement("ul");
+
+    details.forEach((detail) => {
+      const detailItem = typeof detail === "string" ? document.createElement("li") : detail.cloneNode(true);
+
+      if (typeof detail === "string") {
+        detailItem.textContent = detail;
+      }
+
+      detailList.append(detailItem);
+    });
+
+    panel.append(detailList);
+  }
+
+  item.replaceChildren(titleRow, panel);
+};
+
+const preserveCvViewportPosition = (referenceElement, update) => {
+  const initialTop = referenceElement.getBoundingClientRect().top;
+
+  update();
+
+  requestAnimationFrame(() => {
+    const delta = referenceElement.getBoundingClientRect().top - initialTop;
+
+    if (Math.abs(delta) > 0.5) {
+      window.scrollBy(0, delta);
+    }
+  });
+};
+
 const initCvAccordion = () => {
   const cvItems = Array.from(document.querySelectorAll("#curriculum-vitae .cv-item"));
 
@@ -63,10 +226,42 @@ const initCvAccordion = () => {
     return;
   }
 
+  cvItems.forEach(renderCvItem);
+
   cvItems.forEach((item) => {
     const panel = item.querySelector(".cv-panel");
+    const titleRow = item.querySelector(".cv-title-row");
     const metaInline = item.querySelector(".cv-meta-inline");
     const locationRow = item.querySelector(".cv-panel .cv-meta-row.is-location");
+    const companyIconPaths = (item.dataset.companyIcons ?? "")
+      .split(",")
+      .map((path) => path.trim())
+      .filter(Boolean);
+
+    item.classList.toggle("has-company-icons", companyIconPaths.length > 0);
+
+    titleRow?.querySelector(".cv-company-icon-stack")?.remove();
+
+    if (titleRow && companyIconPaths.length) {
+      const iconStack = document.createElement("span");
+      iconStack.className = "cv-company-icon-stack";
+      iconStack.setAttribute("aria-hidden", "true");
+
+      companyIconPaths.forEach((path) => {
+        const iconBadge = document.createElement("span");
+        iconBadge.className = "cv-company-icon-badge";
+
+        const iconImage = document.createElement("img");
+        iconImage.src = path;
+        iconImage.alt = "";
+        iconImage.className = "cv-company-icon-image";
+
+        iconBadge.append(iconImage);
+        iconStack.append(iconBadge);
+      });
+
+      titleRow.prepend(iconStack);
+    }
 
     if (panel && !panel.querySelector(".cv-panel-inner")) {
       const panelInner = document.createElement("div");
@@ -120,10 +315,12 @@ const initCvAccordion = () => {
     setOpen(item, false);
 
     const toggle = () => {
-      const nextState = !item.classList.contains("is-open");
+      preserveCvViewportPosition(titleRow, () => {
+        const nextState = !item.classList.contains("is-open");
 
-      cvItems.forEach((candidate) => {
-        setOpen(candidate, candidate === item ? nextState : false);
+        cvItems.forEach((candidate) => {
+          setOpen(candidate, candidate === item ? nextState : false);
+        });
       });
     };
 

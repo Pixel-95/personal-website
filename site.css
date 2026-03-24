@@ -453,6 +453,7 @@ body:not(.home-page) footer {
 
 .cv-section {
   position: relative;
+  overflow-anchor: none;
 }
 
 .cv-section::before {
@@ -468,6 +469,7 @@ body:not(.home-page) footer {
   position: relative;
   display: grid;
   padding: 0.5rem 0 0;
+  overflow-anchor: none;
 }
 
 .cv-list::before,
@@ -561,7 +563,6 @@ body:not(.home-page) footer {
     var(--shadow-md),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
   transition:
-    transform 280ms var(--ease-premium),
     border-color 220ms ease,
     background-color 220ms ease;
 }
@@ -577,7 +578,6 @@ body:not(.home-page) footer {
 }
 
 .cv-item:hover {
-  transform: translateY(-3px);
   border-color: rgba(255, 255, 255, 0.14);
 }
 
@@ -587,38 +587,66 @@ body:not(.home-page) footer {
 
 .cv-title-row {
   position: relative;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1.2rem 1.25rem;
+  display: block;
+  padding: 1.15rem 5rem 1.2rem 1.25rem;
   cursor: pointer;
 }
 
-.cv-title-row::after {
-  content: "+";
+.cv-item.has-company-icons .cv-title-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 1rem;
+  padding-left: 1rem;
+}
+
+.cv-company-icon-stack {
+  display: grid;
+  align-content: start;
+  gap: 0.45rem;
+  width: 3rem;
+}
+
+.cv-company-icon-badge {
   display: grid;
   place-items: center;
-  flex: 0 0 2.6rem;
-  width: 2.6rem;
-  height: 2.6rem;
-  margin-top: 0.05rem;
+  width: 3rem;
+  height: 3rem;
+  padding: 0.22rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.03);
-  color: var(--text-secondary);
-  font-size: 1rem;
-  line-height: 1;
-  transition:
-    transform 280ms var(--ease-premium),
-    border-color 220ms ease,
-    color 220ms ease;
+  border-radius: 1rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025)),
+    rgba(255, 255, 255, 0.02);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.cv-company-icon-image {
+  width: 80%;
+  height: 80%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.cv-title-row::after {
+  content: "";
+  display: grid;
+  place-items: center;
+  position: absolute;
+  right: 0.85rem;
+  bottom: 0.85rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 7.5L10 12.5L15 7.5' stroke='rgba(246,248,251,0.78)' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 0.92rem 0.92rem;
+  transition: transform 140ms var(--ease-premium);
 }
 
 .cv-title-row[aria-expanded="true"]::after {
-  content: "-";
-  border-color: rgba(255, 255, 255, 0.14);
-  color: #fff;
+  transform: rotate(180deg);
 }
 
 .cv-title-row:focus-visible {
@@ -630,14 +658,15 @@ body:not(.home-page) footer {
 }
 
 .cv-title-main {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  display: block;
   min-width: 0;
-  flex: 1;
 }
 
 .cv-icon-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -695,6 +724,27 @@ body:not(.home-page) footer {
   filter: invert(1) opacity(0.4);
 }
 
+.cv-item a,
+.cv-item a:visited {
+  color: var(--accent-solid);
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+  transition:
+    color 180ms ease,
+    text-shadow 220ms ease,
+    text-decoration-color 180ms ease;
+}
+
+.cv-item a:hover,
+.cv-item a:focus-visible {
+  color: var(--accent-solid);
+  text-shadow:
+    0 0 0.35rem rgba(255, 111, 70, 0.4),
+    0 0 0.8rem rgba(255, 73, 106, 0.18);
+}
+
 .cv-panel {
   padding: 0 1.25rem 1.25rem 5.25rem;
   color: var(--text-secondary);
@@ -705,7 +755,7 @@ body:not(.home-page) footer {
   grid-template-rows: 0fr;
   padding: 0;
   overflow: hidden;
-  transition: grid-template-rows 360ms var(--ease-premium);
+  transition: grid-template-rows 180ms var(--ease-premium);
 }
 
 .js-enhanced .cv-item.is-open .cv-panel {
@@ -720,11 +770,11 @@ body:not(.home-page) footer {
 .js-enhanced .cv-panel-inner {
   padding: 0 1.25rem 0 5.25rem;
   opacity: 0;
-  transform: translateY(-0.35rem);
+  transform: translateY(-0.18rem);
   transition:
-    padding-bottom 360ms var(--ease-premium),
-    opacity 220ms ease,
-    transform 360ms var(--ease-premium);
+    padding-bottom 180ms var(--ease-premium),
+    opacity 120ms ease,
+    transform 180ms var(--ease-premium);
 }
 
 .js-enhanced .cv-item.is-open .cv-panel-inner {
@@ -1196,11 +1246,32 @@ body:not(.home-page) footer {
   }
 
   .cv-title-row {
-    padding: 1rem 1rem 1rem 1rem;
+    padding: 1rem 4.35rem 1rem 1rem;
+  }
+
+  .cv-item.has-company-icons .cv-title-row {
+    gap: 0.85rem;
+    padding-left: 1rem;
+  }
+
+  .cv-company-icon-stack {
+    gap: 0.4rem;
+    width: 2.75rem;
+  }
+
+  .cv-company-icon-badge {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 0.9rem;
+  }
+
+  .cv-company-icon-image {
+    width: 100%;
+    height: 100%;
   }
 
   .cv-title-main {
-    gap: 0.85rem;
+    min-width: 0;
   }
 
   .cv-heading-copy h3 {
