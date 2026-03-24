@@ -466,8 +466,9 @@ body:not(.home-page) footer {
 }
 
 .cv-list {
+  --cv-stagger-overlap: 3.8rem;
   position: relative;
-  display: grid;
+  display: block;
   padding: 0.5rem 0 0;
   overflow-anchor: none;
 }
@@ -506,6 +507,10 @@ body:not(.home-page) footer {
   position: relative;
   width: 50%;
   padding: 0 3rem 1.35rem 0;
+}
+
+.cv-list > li + li {
+  margin-top: calc(var(--cv-stagger-overlap) * -1);
 }
 
 .cv-list > li:nth-child(even) {
@@ -1166,9 +1171,16 @@ body:not(.home-page) footer {
 
   .cv-list > li,
   .cv-list > li:nth-child(even) {
+    position: relative;
+    top: auto !important;
+    left: auto;
     width: 100%;
     margin-left: 0;
     padding: 0 0 1.15rem 2.75rem;
+  }
+
+  .cv-list > li + li {
+    margin-top: 0;
   }
 
   .cv-list > li::before,

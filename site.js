@@ -1,6 +1,7 @@
 document.documentElement.classList.add("js-enhanced");
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const cvTimelineStackQuery = "(max-width: 67.5rem)";
 const hashTarget = window.location.hash ? document.querySelector(window.location.hash) : null;
 
 if (hashTarget) {
@@ -219,8 +220,79 @@ const preserveCvViewportPosition = (referenceElement, update) => {
   });
 };
 
+const withCvTransitionAnchorLock = (referenceElement, cvList, update) => {
+  if (!referenceElement) {
+    update();
+    window.dispatchEvent(new Event("cv:layout"));
+    return;
+  }
+
+  if (!cvList) {
+    preserveCvViewportPosition(referenceElement, update);
+    window.dispatchEvent(new Event("cv:layout"));
+    return;
+  }
+
+  const initialTop = referenceElement.getBoundingClientRect().top;
+  const syncAnchor = () => {
+    const delta = referenceElement.getBoundingClientRect().top - initialTop;
+
+    if (Math.abs(delta) > 0.5) {
+      window.scrollBy(0, delta);
+    }
+
+    window.dispatchEvent(new Event("cv:layout"));
+  };
+  const scheduleSync = createFrameScheduler(syncAnchor);
+  let resizeObserver = null;
+  let cleanupTimeoutId = null;
+  let isCleanedUp = false;
+
+  const cleanup = () => {
+    if (isCleanedUp) {
+      return;
+    }
+
+    isCleanedUp = true;
+    resizeObserver?.disconnect();
+    cvList.removeEventListener("transitionend", handleTransitionEnd, true);
+
+    if (cleanupTimeoutId !== null) {
+      clearTimeout(cleanupTimeoutId);
+    }
+
+    scheduleSync();
+  };
+
+  const handleTransitionEnd = (event) => {
+    if (!(event.target instanceof Element) || !event.target.classList.contains("cv-panel")) {
+      return;
+    }
+
+    if (event.propertyName !== "grid-template-rows") {
+      return;
+    }
+
+    cleanup();
+  };
+
+  if ("ResizeObserver" in window) {
+    resizeObserver = new ResizeObserver(() => {
+      scheduleSync();
+    });
+
+    resizeObserver.observe(cvList);
+  }
+
+  cvList.addEventListener("transitionend", handleTransitionEnd, true);
+  update();
+  scheduleSync();
+  cleanupTimeoutId = window.setTimeout(cleanup, 220);
+};
+
 const initCvAccordion = () => {
   const cvItems = Array.from(document.querySelectorAll("#curriculum-vitae .cv-item"));
+  const cvList = document.querySelector("#curriculum-vitae .cv-list");
 
   if (!cvItems.length) {
     return;
@@ -315,7 +387,7 @@ const initCvAccordion = () => {
     setOpen(item, false);
 
     const toggle = () => {
-      preserveCvViewportPosition(titleRow, () => {
+      withCvTransitionAnchorLock(titleRow, cvList, () => {
         const nextState = !item.classList.contains("is-open");
 
         cvItems.forEach((candidate) => {
@@ -348,7 +420,7 @@ const initCvGlowState = () => {
   glow.className = "cv-glow-indicator";
   glow.setAttribute("aria-hidden", "true");
   document.body.append(glow);
-  const mobileQuery = window.matchMedia("(max-width: 67.5rem)");
+  const mobileQuery = window.matchMedia(cvTimelineStackQuery);
 
   const updateState = () => {
     const rect = cvSection.getBoundingClientRect();
@@ -377,6 +449,7 @@ const initCvGlowState = () => {
   updateState();
   window.addEventListener("scroll", scheduleUpdate, { passive: true });
   window.addEventListener("resize", scheduleUpdate);
+  window.addEventListener("cv:layout", scheduleUpdate);
   addMediaChangeListener(mobileQuery, scheduleUpdate);
 };
 
