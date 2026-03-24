@@ -267,7 +267,7 @@ body:not(.home-page) footer {
   --hero-shift-y: 0px;
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.98fr);
+  grid-template-columns: minmax(0, 1.08fr) minmax(18rem, 0.92fr);
   gap: clamp(2rem, 4vw, 4rem);
   align-items: center;
   min-height: calc(100svh - 6rem);
@@ -288,9 +288,9 @@ body:not(.home-page) footer {
 
 .hero-copy {
   display: grid;
-  gap: 1.15rem;
+  gap: 1.4rem;
   align-content: center;
-  max-width: 35rem;
+  max-width: 39rem;
 }
 
 .hero-copy h1 {
@@ -1254,7 +1254,7 @@ body:not(.home-page) footer {
   }
 
   .hero-copy {
-    gap: 1rem;
+    gap: 1.2rem;
   }
 
   .cv-title-row {
@@ -1368,7 +1368,7 @@ body:not(.home-page) footer {
 }
 
 :root {
-  --page-width: min(74rem, calc(100vw - 2rem));
+  --page-width: min(78rem, calc(100vw - 2rem));
 }
 
 html,
@@ -1502,11 +1502,12 @@ footer {
 
 @media (min-width: 67.5625rem) {
   .hero-copy {
-    gap: clamp(0.72rem, 1.3svh, 1.05rem);
+    gap: clamp(1rem, 1.7svh, 1.35rem);
     padding-bottom: clamp(1.75rem, 4.5svh, 3.1rem);
   }
 
   .hero-copy h1 {
+    max-width: none;
     font-size: clamp(3.1rem, min(7.8vw, 11svh), 6.4rem);
     line-height: 0.88;
   }
@@ -1942,13 +1943,26 @@ footer {
     margin-top: -0.55rem;
   }
 
-  .sport-card-media {
-    order: 1;
+  .sport-card-copy {
+    max-width: none;
   }
 
-  .sport-card-copy {
-    order: 2;
-    max-width: none;
+  .stack-marquee {
+    overflow-x: auto;
+    overflow-y: hidden;
+    mask-image: none;
+    scrollbar-width: none;
+    touch-action: pan-x;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .stack-marquee::-webkit-scrollbar {
+    display: none;
+  }
+
+  .js-enhanced .stack-marquee-inner.is-ready {
+    animation: none;
   }
 
   .sport-card-copy h3 {
@@ -2073,5 +2087,37 @@ footer {
   .sport-card-stack,
   .sport-card-frame img {
     transition: none;
+  }
+}
+
+@media (max-width: 67.5rem) and (prefers-reduced-motion: reduce) {
+  .stack-marquee {
+    overflow-x: auto;
+    overflow-y: hidden;
+    mask-image: none;
+    scrollbar-width: none;
+    touch-action: pan-x;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .stack-marquee::-webkit-scrollbar {
+    display: none;
+  }
+
+  .stack-marquee-inner,
+  .js-enhanced .stack-marquee-inner.is-ready {
+    display: flex;
+    width: max-content;
+    animation: none;
+  }
+
+  .stack-track {
+    flex-wrap: nowrap;
+    margin-top: 0;
+  }
+
+  .stack-track[aria-hidden="true"] {
+    display: flex;
   }
 }

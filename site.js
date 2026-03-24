@@ -39,22 +39,168 @@ const createFrameScheduler = (callback) => {
 };
 
 const initTechStackMarquee = () => {
+  const marquee = document.querySelector("#tech-stack .stack-marquee");
   const marqueeInner = document.querySelector("#tech-stack .stack-marquee-inner");
   const sourceTrack = marqueeInner?.querySelector(".stack-track");
 
-  if (!marqueeInner || !sourceTrack) {
+  if (!marquee || !marqueeInner || !sourceTrack) {
     return;
   }
 
-  const existingClone = marqueeInner.querySelector('.stack-track[aria-hidden="true"]');
+  let clonedTrack = marqueeInner.querySelector('.stack-track[aria-hidden="true"]');
 
-  if (!existingClone) {
-    const clonedTrack = sourceTrack.cloneNode(true);
+  if (!clonedTrack) {
+    clonedTrack = sourceTrack.cloneNode(true);
     clonedTrack.setAttribute("aria-hidden", "true");
     marqueeInner.append(clonedTrack);
   }
 
   marqueeInner.classList.add("is-ready");
+
+  const mobileQuery = window.matchMedia(cvTimelineStackQuery);
+  let cycleLength = 0;
+  let animationFrameId = null;
+  let lastTimestamp = 0;
+  let resumeTimeoutId = null;
+  let isProgrammaticScroll = false;
+
+  const getTrackGap = () => {
+    const styles = window.getComputedStyle(marqueeInner);
+    const gapValue = styles.columnGap !== "normal" ? styles.columnGap : styles.gap;
+    return Number.parseFloat(gapValue) || 0;
+  };
+
+  const measureCycleLength = () => {
+    cycleLength = sourceTrack.getBoundingClientRect().width + getTrackGap();
+  };
+
+  const stopAutoScroll = () => {
+    if (animationFrameId !== null) {
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = null;
+    }
+
+    lastTimestamp = 0;
+  };
+
+  const clearResumeTimeout = () => {
+    if (resumeTimeoutId !== null) {
+      clearTimeout(resumeTimeoutId);
+      resumeTimeoutId = null;
+    }
+  };
+
+  const normalizeScrollPosition = () => {
+    if (!mobileQuery.matches || cycleLength <= 0) {
+      return;
+    }
+
+    let nextScrollLeft = marquee.scrollLeft;
+
+    while (nextScrollLeft >= cycleLength) {
+      nextScrollLeft -= cycleLength;
+    }
+
+    while (nextScrollLeft < 0) {
+      nextScrollLeft += cycleLength;
+    }
+
+    if (Math.abs(nextScrollLeft - marquee.scrollLeft) > 0.5) {
+      isProgrammaticScroll = true;
+      marquee.scrollLeft = nextScrollLeft;
+    }
+  };
+
+  const step = (timestamp) => {
+    if (!mobileQuery.matches || prefersReducedMotion.matches || cycleLength <= 0) {
+      stopAutoScroll();
+      return;
+    }
+
+    if (lastTimestamp === 0) {
+      lastTimestamp = timestamp;
+      animationFrameId = requestAnimationFrame(step);
+      return;
+    }
+
+    const delta = timestamp - lastTimestamp;
+    lastTimestamp = timestamp;
+
+    isProgrammaticScroll = true;
+    marquee.scrollLeft += (cycleLength / 34000) * delta;
+    normalizeScrollPosition();
+    animationFrameId = requestAnimationFrame(step);
+  };
+
+  const startAutoScroll = () => {
+    measureCycleLength();
+
+    if (!mobileQuery.matches || prefersReducedMotion.matches || cycleLength <= 0 || animationFrameId !== null) {
+      return;
+    }
+
+    lastTimestamp = 0;
+    animationFrameId = requestAnimationFrame(step);
+  };
+
+  const pauseAndResumeAutoScroll = () => {
+    if (!mobileQuery.matches || prefersReducedMotion.matches) {
+      return;
+    }
+
+    stopAutoScroll();
+    clearResumeTimeout();
+    resumeTimeoutId = window.setTimeout(() => {
+      resumeTimeoutId = null;
+      startAutoScroll();
+    }, 1200);
+  };
+
+  const syncMarqueeMode = () => {
+    stopAutoScroll();
+    clearResumeTimeout();
+    measureCycleLength();
+
+    if (!mobileQuery.matches) {
+      if (marquee.scrollLeft !== 0) {
+        isProgrammaticScroll = true;
+        marquee.scrollLeft = 0;
+      }
+
+      return;
+    }
+
+    normalizeScrollPosition();
+
+    if (!prefersReducedMotion.matches) {
+      startAutoScroll();
+    }
+  };
+
+  const scheduleSyncMarqueeMode = createFrameScheduler(syncMarqueeMode);
+
+  marquee.addEventListener("scroll", () => {
+    if (!mobileQuery.matches) {
+      return;
+    }
+
+    if (isProgrammaticScroll) {
+      isProgrammaticScroll = false;
+      return;
+    }
+
+    normalizeScrollPosition();
+    pauseAndResumeAutoScroll();
+  }, { passive: true });
+
+  marquee.addEventListener("pointerdown", pauseAndResumeAutoScroll, { passive: true });
+  marquee.addEventListener("touchstart", pauseAndResumeAutoScroll, { passive: true });
+  marquee.addEventListener("wheel", pauseAndResumeAutoScroll, { passive: true });
+
+  addMediaChangeListener(mobileQuery, syncMarqueeMode);
+  addMediaChangeListener(prefersReducedMotion, syncMarqueeMode);
+  window.addEventListener("resize", scheduleSyncMarqueeMode);
+  syncMarqueeMode();
 };
 
 const CV_ENTRY_TYPES = {
