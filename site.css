@@ -631,7 +631,7 @@ body:not(.home-page) footer {
 
 .cv-title-main {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 1rem;
   min-width: 0;
   flex: 1;
@@ -676,7 +676,7 @@ body:not(.home-page) footer {
 .cv-meta-row {
   display: grid;
   grid-template-columns: 1rem minmax(0, 1fr);
-  align-items: start;
+  align-items: center;
   column-gap: 0.52rem;
   min-width: 0;
   font-size: 0.92rem;
@@ -689,6 +689,7 @@ body:not(.home-page) footer {
 
 .cv-entry-picture {
   flex: 0 0 1rem;
+  align-self: center;
   width: 1rem;
   height: 1rem;
   filter: invert(1) opacity(0.4);
