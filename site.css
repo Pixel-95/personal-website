@@ -1137,7 +1137,7 @@ body:not(.home-page) footer {
     height: auto;
     grid-template-columns: 1fr;
     gap: 1.4rem;
-    padding-bottom: 3rem;
+    padding-bottom: 4rem;
   }
 
   .hero-copy {
@@ -1945,7 +1945,7 @@ footer {
 
   .sport-card-copy {
     max-width: none;
-    padding-top: 0.3rem;
+    padding-top: 0.75rem;
   }
 
   .stack-marquee {
@@ -2041,7 +2041,7 @@ footer {
 
   .sport-card-copy {
     gap: 0.82rem;
-    padding-top: 0.35rem;
+    padding-top: 0.8rem;
     padding-inline: 0;
   }
 
