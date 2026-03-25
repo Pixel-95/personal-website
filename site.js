@@ -38,6 +38,65 @@ const createFrameScheduler = (callback) => {
   };
 };
 
+const SUBPAGE_PRIMARY_NAV_ITEMS = [
+  { key: "home", label: "Home", path: "" },
+  { key: "projects", label: "Projects", path: "projects/" },
+  { key: "contact", label: "Contact", path: "contact/" },
+];
+
+const SUBPAGE_LEGAL_NAV_ITEMS = [
+  { key: "imprint", label: "Imprint", path: "imprint/" },
+  { key: "privacy", label: "Privacy", path: "privacy/" },
+];
+
+const createShellNav = (items, currentKey, basePath, className, ariaLabel) => {
+  const nav = document.createElement("nav");
+  nav.className = className;
+  nav.setAttribute("aria-label", ariaLabel);
+
+  items.forEach((item) => {
+    const link = document.createElement("a");
+    link.href = `${basePath}${item.path}`;
+    link.textContent = item.label;
+
+    if (item.key === currentKey) {
+      link.setAttribute("aria-current", "page");
+    }
+
+    nav.append(link);
+  });
+
+  return nav;
+};
+
+const initSubpageShell = () => {
+  const body = document.body;
+
+  if (!body.classList.contains("shell-page")) {
+    return;
+  }
+
+  const basePath = body.dataset.basePath ?? "./";
+  const primaryCurrent = body.dataset.primaryNav?.trim() ?? "";
+  const legalCurrent = body.dataset.legalNav?.trim() ?? "";
+  const header = document.querySelector("body > header");
+  const footer = document.querySelector("body > footer");
+
+  if (header) {
+    header.classList.add("shell-header");
+    header.replaceChildren(
+      createShellNav(SUBPAGE_PRIMARY_NAV_ITEMS, primaryCurrent, basePath, "site-nav", "Primary"),
+    );
+  }
+
+  if (footer) {
+    footer.classList.add("site-footer", "shell-footer");
+    footer.replaceChildren(
+      createShellNav(SUBPAGE_LEGAL_NAV_ITEMS, legalCurrent, basePath, "footer-nav", "Legal"),
+    );
+  }
+};
+
 const initTechStackMarquee = () => {
   const marquee = document.querySelector("#tech-stack .stack-marquee");
   const marqueeInner = document.querySelector("#tech-stack .stack-marquee-inner");
@@ -599,6 +658,7 @@ const initCvGlowState = () => {
   addMediaChangeListener(mobileQuery, scheduleUpdate);
 };
 
+initSubpageShell();
 initTechStackMarquee();
 initCvAccordion();
 initCvGlowState();

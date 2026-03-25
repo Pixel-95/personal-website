@@ -245,34 +245,34 @@ section {
   margin: 0;
 }
 
-body:not(.home-page) header,
-body:not(.home-page) main,
-body:not(.home-page) footer {
+body:not(.home-page):not(.shell-page) header,
+body:not(.home-page):not(.shell-page) main,
+body:not(.home-page):not(.shell-page) footer {
   width: min(48rem, calc(100% - 2rem));
 }
 
-body:not(.home-page) header {
+body:not(.home-page):not(.shell-page) header {
   padding-top: 1.25rem;
 }
 
-body:not(.home-page) .site-nav,
-body:not(.home-page) .footer-nav {
+body:not(.home-page):not(.shell-page) .site-nav,
+body:not(.home-page):not(.shell-page) .footer-nav {
   padding: 0.35rem 0;
 }
 
-body:not(.home-page) .site-nav a,
-body:not(.home-page) .footer-nav a {
+body:not(.home-page):not(.shell-page) .site-nav a,
+body:not(.home-page):not(.shell-page) .footer-nav a {
   padding: 0.7rem 1rem;
   border: 1px solid var(--border-soft);
   background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(18px);
 }
 
-body:not(.home-page) main {
+body:not(.home-page):not(.shell-page) main {
   padding: 1.5rem 0 3rem;
 }
 
-body:not(.home-page) main > section {
+body:not(.home-page):not(.shell-page) main > section {
   padding: 1.5rem;
   border: 1px solid var(--border-soft);
   border-radius: var(--radius-lg);
@@ -280,35 +280,35 @@ body:not(.home-page) main > section {
   box-shadow: var(--shadow-md);
 }
 
-body:not(.home-page) main > section + section {
+body:not(.home-page):not(.shell-page) main > section + section {
   margin-top: 1.25rem;
 }
 
-body:not(.home-page) ul,
-body:not(.home-page) ol {
+body:not(.home-page):not(.shell-page) ul,
+body:not(.home-page):not(.shell-page) ol {
   padding-left: 1.25rem;
 }
 
-body:not(.home-page) li + li,
-body:not(.home-page) blockquote + blockquote {
+body:not(.home-page):not(.shell-page) li + li,
+body:not(.home-page):not(.shell-page) blockquote + blockquote {
   margin-top: 0.75rem;
 }
 
-body:not(.home-page) footer {
+body:not(.home-page):not(.shell-page) footer {
   padding-bottom: 2rem;
 }
 
-body.legal-page header,
-body.legal-page main,
-body.legal-page footer {
+body.shell-page header,
+body.shell-page main,
+body.shell-page footer {
   width: var(--page-width);
 }
 
-body.legal-page header {
+body.shell-page header {
   padding-top: 1rem;
 }
 
-body.legal-page .site-nav {
+body.shell-page .site-nav {
   position: sticky;
   top: 1rem;
   z-index: 20;
@@ -324,21 +324,28 @@ body.legal-page .site-nav {
   box-shadow: var(--shadow-md);
 }
 
-body.legal-page .site-nav a {
+body.shell-page .site-nav a {
   padding: 0.8rem 1.12rem;
   border: 1px solid transparent;
   background: transparent;
 }
 
-body.legal-page .site-nav a:hover {
+body.shell-page .site-nav a:hover {
   background: rgba(255, 255, 255, 0.05);
 }
 
-body.legal-page main {
+body.shell-page .site-nav a[aria-current="page"] {
+  border-color: rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)),
+    rgba(255, 255, 255, 0.03);
+}
+
+body.shell-page main {
   padding: 1.75rem 0 3.5rem;
 }
 
-body.legal-page main > section {
+body.shell-page main > section {
   padding: clamp(1.5rem, 2.6vw, 2.35rem);
   border: 1px solid var(--border-soft);
   border-radius: calc(var(--radius-xl) - 0.15rem);
@@ -349,11 +356,21 @@ body.legal-page main > section {
   backdrop-filter: blur(18px);
 }
 
-body.legal-page main > section + section {
+body.shell-page main > section + section {
   margin-top: 1.5rem;
 }
 
-body.legal-page footer {
+body.shell-page ul,
+body.shell-page ol {
+  padding-left: 1.25rem;
+}
+
+body.shell-page li + li,
+body.shell-page blockquote + blockquote {
+  margin-top: 0.75rem;
+}
+
+body.shell-page footer {
   padding-bottom: 3rem;
 }
 
@@ -462,7 +479,7 @@ body.legal-page footer {
 }
 
 .legal-grid--imprint {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
 }
 
 .legal-grid--privacy {
@@ -1518,13 +1535,12 @@ body.legal-page footer {
 }
 
 @media (max-width: 67.5rem) {
-  body.legal-page main {
+  body.shell-page main {
     padding-top: 1.35rem;
   }
 
-  body.legal-page .site-nav {
-    width: min(100%, 40rem);
-    margin: 0 0 1.8rem;
+  body.shell-page .site-nav {
+    margin: 0 0 2.4rem;
   }
 
   .legal-hero-grid,
@@ -2433,14 +2449,16 @@ footer {
     --page-width: min(74rem, calc(100vw - 1rem));
   }
 
-  body.legal-page .site-nav {
+  body.shell-page .site-nav {
     width: 100%;
     justify-content: space-between;
+    margin-bottom: 1.5rem;
   }
 
-  body.legal-page .site-nav a {
+  body.shell-page .site-nav a {
     flex: 1 1 0;
     text-align: center;
+    padding-inline: 0.75rem;
   }
 
   .legal-hero {
