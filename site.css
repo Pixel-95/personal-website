@@ -3000,9 +3000,11 @@ footer {
 }
 
 .project-card {
+  --project-gallery-viewport-max: clamp(17rem, 42vw, 40rem);
+  --project-gallery-item-height: clamp(15rem, 26vw, 22rem);
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+  grid-template-columns: minmax(22rem, 1fr) fit-content(var(--project-gallery-viewport-max));
   gap: clamp(1.25rem, 2.8vw, 2.35rem);
   align-items: start;
   padding: clamp(1.25rem, 2.6vw, 1.95rem);
@@ -3186,25 +3188,24 @@ body.shell-page .project-meta li + li {
 .project-card-media {
   display: grid;
   align-content: start;
+  justify-self: end;
   min-width: 0;
   align-self: start;
+  width: fit-content;
+  max-width: min(100%, var(--project-gallery-viewport-max));
 }
 
 .project-gallery {
   overflow-x: auto;
   overflow-y: hidden;
+  width: fit-content;
+  max-width: min(100%, var(--project-gallery-viewport-max));
   padding-bottom: 0.55rem;
-  scroll-snap-type: x mandatory;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
   overscroll-behavior-x: contain;
   -webkit-overflow-scrolling: touch;
   touch-action: pan-x;
-}
-
-.project-gallery:focus-visible {
-  outline: 2px solid rgba(255, 214, 198, 0.92);
-  outline-offset: 4px;
 }
 
 .project-gallery::-webkit-scrollbar {
@@ -3222,7 +3223,7 @@ body.shell-page .project-meta li + li {
 
 .project-gallery-track {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 0.9rem;
   width: max-content;
 }
@@ -3233,22 +3234,24 @@ body.shell-page .project-meta li + li {
   flex: 0 0 auto;
   min-width: 0;
   width: auto;
-  max-width: min(76%, 32rem);
-  height: clamp(15rem, 26vw, 22rem);
+  height: var(--project-gallery-item-height);
+  aspect-ratio: var(--gallery-ratio, 1 / 1);
   margin: 0;
   overflow: clip;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 1.35rem;
+  border: 0;
+  border-radius: 0.675rem;
   background: transparent;
   box-shadow: 0 16px 38px rgba(0, 0, 0, 0.18);
-  scroll-snap-align: start;
 }
 
 .project-gallery-item img {
-  width: auto;
+  display: block;
+  width: 100%;
   max-width: 100%;
-  height: auto;
+  height: 100%;
   max-height: 100%;
+  object-fit: contain;
+  object-position: center;
   transition: transform 500ms var(--ease-premium);
 }
 
@@ -3314,10 +3317,6 @@ body.shell-page .project-meta li + li {
       0 34px 82px rgba(0, 0, 0, 0.26);
   }
 
-  .project-card:hover .project-gallery-item img {
-    transform: scale(1.018);
-  }
-
   .project-links a:hover {
     transform: translateY(-1px);
     border-color: rgba(255, 178, 150, 0.34);
@@ -3338,6 +3337,7 @@ body.shell-page .project-meta li + li {
 @media (max-width: 67.5rem) {
   .project-card,
   .project-card-publications {
+    --project-gallery-item-height: clamp(14rem, 34vw, 20rem);
     grid-template-columns: 1fr;
     gap: 1.15rem;
   }
@@ -3347,9 +3347,15 @@ body.shell-page .project-meta li + li {
     font-size: clamp(2rem, 6vw, 2.8rem);
   }
 
-  .project-gallery-item {
-    max-width: min(78vw, 28rem);
-    height: clamp(14rem, 34vw, 20rem);
+  .project-card-media {
+    justify-self: stretch;
+    width: 100%;
+    max-width: none;
+  }
+
+  .project-gallery {
+    width: 100%;
+    max-width: none;
   }
 }
 
@@ -3363,6 +3369,7 @@ body.shell-page .project-meta li + li {
   }
 
   .project-card {
+    --project-gallery-item-height: clamp(12rem, 52vw, 16rem);
     padding: 1rem;
     border-radius: 1.6rem;
     gap: 1rem;
@@ -3392,13 +3399,18 @@ body.shell-page .project-meta li + li {
   }
 
   .project-gallery {
+    width: 100%;
+    max-width: none;
     padding-bottom: 0.45rem;
+    scrollbar-width: none;
+  }
+
+  .project-gallery::-webkit-scrollbar {
+    display: none;
   }
 
   .project-gallery-item {
-    max-width: 90vw;
-    height: clamp(12rem, 52vw, 16rem);
-    border-radius: 1.1rem;
+    border-radius: 0.55rem;
   }
 
   .project-card-content {
