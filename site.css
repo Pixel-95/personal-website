@@ -3369,7 +3369,6 @@ body.shell-page .project-meta li + li {
   }
 
   .project-card {
-    --project-gallery-item-height: clamp(12rem, 52vw, 16rem);
     padding: 1rem;
     border-radius: 1.6rem;
     gap: 1rem;
@@ -3409,7 +3408,15 @@ body.shell-page .project-meta li + li {
     display: none;
   }
 
+  .project-gallery-track {
+    align-items: flex-start;
+    width: 100%;
+  }
+
   .project-gallery-item {
+    flex-basis: calc(100% - 0.35rem);
+    width: calc(100% - 0.35rem);
+    height: auto;
     border-radius: 0.55rem;
   }
 
