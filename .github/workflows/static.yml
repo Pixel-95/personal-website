@@ -33,11 +33,17 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Prepare site artifact
+        run: |
+          mkdir -p _site
+          cp -R assets contact imprint privacy projects _site/
+          cp favicon.png index.html robots.txt site.css site.js sitemap.xml _site/
+          if [ -f CNAME ]; then cp CNAME _site/; fi
+          if [ -f 404.html ]; then cp 404.html _site/; fi
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          path: '_site'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

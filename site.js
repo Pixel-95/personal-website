@@ -2,7 +2,33 @@ document.documentElement.classList.add("js-enhanced");
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const cvTimelineStackQuery = "(max-width: 67.5rem)";
-const hashTarget = window.location.hash ? document.querySelector(window.location.hash) : null;
+const getHashTarget = () => {
+  const { hash } = window.location;
+
+  if (!hash || hash === "#") {
+    return null;
+  }
+
+  try {
+    return document.getElementById(decodeURIComponent(hash.slice(1)));
+  } catch {
+    return null;
+  }
+};
+const hashTarget = getHashTarget();
+
+const CV_FOCUSABLE_SELECTOR = [
+  "a[href]",
+  "button",
+  "input",
+  "select",
+  "textarea",
+  "summary",
+  "iframe",
+  "audio[controls]",
+  "video[controls]",
+  "[tabindex]",
+].join(", ");
 
 if (hashTarget) {
   document.documentElement.style.scrollBehavior = "auto";
@@ -623,6 +649,39 @@ const preserveCvViewportPosition = (referenceElement, update) => {
   });
 };
 
+const setPanelInteractivity = (panel, enabled) => {
+  panel.toggleAttribute("inert", !enabled);
+
+  panel.querySelectorAll(CV_FOCUSABLE_SELECTOR).forEach((element) => {
+    if (!(element instanceof HTMLElement)) {
+      return;
+    }
+
+    if (!enabled) {
+      if (!element.hasAttribute("data-cv-tabindex")) {
+        element.setAttribute("data-cv-tabindex", element.getAttribute("tabindex") ?? "");
+      }
+
+      element.tabIndex = -1;
+      return;
+    }
+
+    if (!element.hasAttribute("data-cv-tabindex")) {
+      return;
+    }
+
+    const storedTabIndex = element.getAttribute("data-cv-tabindex");
+
+    if (storedTabIndex) {
+      element.setAttribute("tabindex", storedTabIndex);
+    } else {
+      element.removeAttribute("tabindex");
+    }
+
+    element.removeAttribute("data-cv-tabindex");
+  });
+};
+
 const withCvTransitionAnchorLock = (referenceElement, cvList, update) => {
   if (!referenceElement) {
     update();
@@ -770,6 +829,7 @@ const initCvAccordion = () => {
     titleRow.setAttribute("aria-expanded", String(open));
     panel.hidden = false;
     panel.setAttribute("aria-hidden", String(!open));
+    setPanelInteractivity(panel, open);
   };
 
   cvItems.forEach((item, index) => {
