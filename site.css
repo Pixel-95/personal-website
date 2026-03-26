@@ -2951,7 +2951,6 @@ footer {
 .projects-hero-copy {
   display: grid;
   gap: 1rem;
-  max-width: 46rem;
 }
 
 .projects-eyebrow {
@@ -2976,13 +2975,11 @@ footer {
 }
 
 .projects-hero h1 {
-  max-width: 12ch;
   font-size: clamp(2.4rem, 5.2vw, 4.2rem);
   line-height: 0.96;
 }
 
 .projects-intro {
-  max-width: 42rem;
   color: var(--text-secondary);
   font-size: clamp(1rem, 1.35vw, 1.08rem);
 }
@@ -3057,6 +3054,10 @@ footer {
   background: radial-gradient(circle, rgba(255, 255, 255, 0.12), transparent 72%);
 }
 
+.project-card-publications {
+  grid-template-columns: 1fr;
+}
+
 .project-card:focus-within {
   border-color: rgba(255, 255, 255, 0.14);
   box-shadow:
@@ -3103,6 +3104,12 @@ footer {
 .project-card-body {
   max-width: 31rem;
   color: var(--text-secondary);
+}
+
+.project-card-publications h3,
+.project-card-publications .project-card-summary,
+.project-card-publications .project-card-body {
+  max-width: none;
 }
 
 .project-meta,
@@ -3187,7 +3194,6 @@ body.shell-page .project-meta li + li {
   overflow-x: auto;
   overflow-y: hidden;
   padding-bottom: 0.55rem;
-  border-radius: 1.45rem;
   scroll-snap-type: x mandatory;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
@@ -3215,29 +3221,34 @@ body.shell-page .project-meta li + li {
 }
 
 .project-gallery-track {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(18rem, 84%);
+  display: flex;
+  align-items: flex-start;
   gap: 0.9rem;
   width: max-content;
 }
 
 .project-gallery-item {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
   min-width: 0;
+  width: auto;
+  max-width: min(76%, 32rem);
+  height: clamp(15rem, 26vw, 22rem);
   margin: 0;
   overflow: clip;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1.35rem;
   background: transparent;
   box-shadow: 0 16px 38px rgba(0, 0, 0, 0.18);
-  aspect-ratio: 4 / 3;
   scroll-snap-align: start;
 }
 
 .project-gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
   transition: transform 500ms var(--ease-premium);
 }
 
@@ -3336,8 +3347,9 @@ body.shell-page .project-meta li + li {
     font-size: clamp(2rem, 6vw, 2.8rem);
   }
 
-  .project-gallery-track {
-    grid-auto-columns: minmax(16.5rem, 78vw);
+  .project-gallery-item {
+    max-width: min(78vw, 28rem);
+    height: clamp(14rem, 34vw, 20rem);
   }
 }
 
@@ -3383,12 +3395,9 @@ body.shell-page .project-meta li + li {
     padding-bottom: 0.45rem;
   }
 
-  .project-gallery-track {
-    grid-auto-columns: 90%;
-    gap: 0.75rem;
-  }
-
   .project-gallery-item {
+    max-width: 90vw;
+    height: clamp(12rem, 52vw, 16rem);
     border-radius: 1.1rem;
   }
 
