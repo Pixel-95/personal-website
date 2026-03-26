@@ -23,6 +23,23 @@ const addMediaChangeListener = (mediaQuery, handler) => {
   mediaQuery.addListener(handler);
 };
 
+const HOME_INTRO_LEAD_IN_MS = 100;
+
+// Edit these values to retime the home intro sequence.
+const HOME_INTRO_TIMINGS = [
+  { group: "media", delay: HOME_INTRO_LEAD_IN_MS, duration: 2000 },
+  { group: "title", delay: 1000, duration: 2000 },
+  { group: "body", delay: 1500, duration: 2000 },
+];
+const HOME_INTRO_TOTAL_DURATION = 2700;
+const HOME_INTRO_IMAGE_WAIT_MS = 400;
+const HOME_INTRO_STATE_CLASSES = [
+  "home-intro-pending",
+  "home-intro-playing",
+  "home-intro-complete",
+];
+const HOME_INTRO_VISIBLE_CLASS = "is-intro-visible";
+
 const createFrameScheduler = (callback) => {
   let frameId = null;
 
@@ -36,6 +53,180 @@ const createFrameScheduler = (callback) => {
       callback();
     });
   };
+};
+
+const initHomeIntro = () => {
+  const body = document.body;
+
+  if (!body.classList.contains("home-page")) {
+    return;
+  }
+
+  const root = document.documentElement;
+  const introElements = Array.from(document.querySelectorAll('[data-intro-group]:not([data-intro-group="page"])'));
+  const heroPortrait = document.querySelector(".hero-portrait");
+  let hasStarted = false;
+  let isFinished = false;
+  let startFrameId = null;
+  const timeoutIds = new Set();
+
+  const syncStateClass = (className, enabled) => {
+    root.classList.toggle(className, enabled);
+    body.classList.toggle(className, enabled);
+  };
+
+  const setState = ({ pending = false, playing = false, complete = false }) => {
+    syncStateClass("home-intro-pending", pending);
+    syncStateClass("home-intro-playing", playing);
+    syncStateClass("home-intro-complete", complete);
+  };
+
+  const clearScheduled = () => {
+    if (startFrameId !== null) {
+      cancelAnimationFrame(startFrameId);
+      startFrameId = null;
+    }
+
+    timeoutIds.forEach((timeoutId) => {
+      clearTimeout(timeoutId);
+    });
+    timeoutIds.clear();
+  };
+
+  const scheduleTimeout = (callback, delay) => {
+    const timeoutId = window.setTimeout(() => {
+      timeoutIds.delete(timeoutId);
+      callback();
+    }, delay);
+
+    timeoutIds.add(timeoutId);
+  };
+
+  const applyIntroTimings = () => {
+    HOME_INTRO_TIMINGS.forEach(({ group, delay, duration }) => {
+      introElements.forEach((element) => {
+        if (element.dataset.introGroup !== group) {
+          return;
+        }
+
+        element.style.setProperty("--intro-delay", `${delay}ms`);
+        element.style.setProperty("--intro-duration", `${duration}ms`);
+      });
+    });
+  };
+
+  const revealAll = () => {
+    introElements.forEach((element) => {
+      element.classList.add(HOME_INTRO_VISIBLE_CLASS);
+    });
+  };
+
+  const hideAll = () => {
+    introElements.forEach((element) => {
+      element.classList.remove(HOME_INTRO_VISIBLE_CLASS);
+    });
+  };
+
+  const revealGroup = (groupName) => {
+    introElements.forEach((element) => {
+      if (element.dataset.introGroup === groupName) {
+        element.classList.add(HOME_INTRO_VISIBLE_CLASS);
+      }
+    });
+  };
+
+  const finalize = () => {
+    if (isFinished) {
+      return;
+    }
+
+    isFinished = true;
+    clearScheduled();
+    revealAll();
+    setState({ complete: true });
+    window.dispatchEvent(new Event("home:intro-complete"));
+  };
+
+  const getInitialScrollOffset = () =>
+    Math.max(window.scrollY, document.documentElement.scrollTop, document.body?.scrollTop ?? 0);
+
+  const shouldSkipIntro = () =>
+    prefersReducedMotion.matches
+    || Boolean(window.location.hash)
+    || getInitialScrollOffset() > 2
+    || !root.classList.contains("home-intro-pending");
+
+  if (!introElements.length) {
+    HOME_INTRO_STATE_CLASSES.forEach((className) => {
+      syncStateClass(className, false);
+    });
+    return;
+  }
+
+  applyIntroTimings();
+  syncStateClass("home-intro-pending", root.classList.contains("home-intro-pending"));
+  hideAll();
+
+  if (shouldSkipIntro()) {
+    finalize();
+    return;
+  }
+
+  const startIntro = () => {
+    if (hasStarted || isFinished) {
+      return;
+    }
+
+    hasStarted = true;
+    setState({ playing: true });
+    startFrameId = requestAnimationFrame(() => {
+      startFrameId = null;
+
+      HOME_INTRO_TIMINGS.forEach(({ group, delay }) => {
+        scheduleTimeout(() => {
+          revealGroup(group);
+        }, delay);
+      });
+
+      scheduleTimeout(finalize, HOME_INTRO_TOTAL_DURATION);
+    });
+  };
+
+  const startWhenReady = () => {
+    if (heroPortrait?.complete && heroPortrait.naturalWidth > 0) {
+      startIntro();
+      return;
+    }
+
+    if (!heroPortrait) {
+      startIntro();
+      return;
+    }
+
+    const handleReady = () => {
+      heroPortrait.removeEventListener("load", handleReady);
+      heroPortrait.removeEventListener("error", handleReady);
+      startIntro();
+    };
+
+    heroPortrait.addEventListener("load", handleReady, { once: true });
+    heroPortrait.addEventListener("error", handleReady, { once: true });
+    scheduleTimeout(handleReady, HOME_INTRO_IMAGE_WAIT_MS);
+  };
+
+  window.addEventListener("pagehide", finalize);
+  window.addEventListener("pageshow", (event) => {
+    if (event.persisted) {
+      finalize();
+    }
+  });
+  addMediaChangeListener(prefersReducedMotion, () => {
+    if (prefersReducedMotion.matches) {
+      finalize();
+    }
+  });
+
+  startWhenReady();
 };
 
 const SUBPAGE_PRIMARY_NAV_ITEMS = [
@@ -84,16 +275,22 @@ const initSubpageShell = () => {
 
   if (header) {
     header.classList.add("shell-header");
-    header.replaceChildren(
-      createShellNav(SUBPAGE_PRIMARY_NAV_ITEMS, primaryCurrent, basePath, "site-nav", "Primary"),
-    );
+
+    if (!header.querySelector(".site-nav")) {
+      header.replaceChildren(
+        createShellNav(SUBPAGE_PRIMARY_NAV_ITEMS, primaryCurrent, basePath, "site-nav", "Primary"),
+      );
+    }
   }
 
   if (footer) {
     footer.classList.add("site-footer", "shell-footer");
-    footer.replaceChildren(
-      createShellNav(SUBPAGE_LEGAL_NAV_ITEMS, legalCurrent, basePath, "footer-nav", "Legal"),
-    );
+
+    if (!footer.querySelector(".footer-nav")) {
+      footer.replaceChildren(
+        createShellNav(SUBPAGE_LEGAL_NAV_ITEMS, legalCurrent, basePath, "footer-nav", "Legal"),
+      );
+    }
   }
 };
 
@@ -498,6 +695,8 @@ const withCvTransitionAnchorLock = (referenceElement, cvList, update) => {
 const initCvAccordion = () => {
   const cvItems = Array.from(document.querySelectorAll("#curriculum-vitae .cv-item"));
   const cvList = document.querySelector("#curriculum-vitae .cv-list");
+  const cvSection = cvList?.closest(".cv-section");
+  const isHomePage = document.body.classList.contains("home-page");
 
   if (!cvItems.length) {
     return;
@@ -611,6 +810,18 @@ const initCvAccordion = () => {
       toggle();
     });
   });
+
+  const markCvReady = () => {
+    cvList?.classList.add("is-ready");
+    cvSection?.classList.add("is-ready");
+  };
+
+  if (!isHomePage || document.documentElement.classList.contains("home-intro-complete")) {
+    markCvReady();
+    return;
+  }
+
+  window.addEventListener("home:intro-complete", markCvReady, { once: true });
 };
 
 const initCvGlowState = () => {
@@ -658,6 +869,7 @@ const initCvGlowState = () => {
   addMediaChangeListener(mobileQuery, scheduleUpdate);
 };
 
+initHomeIntro();
 initSubpageShell();
 initTechStackMarquee();
 initCvAccordion();
