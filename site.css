@@ -2330,31 +2330,33 @@ footer {
 .home-page [data-intro-group]:not([data-intro-group="page"]) {
   /* Delay and duration are injected from HOME_INTRO_TIMINGS in site.js. */
   --intro-duration: 860ms;
+  --intro-reveal-duration: 573ms;
   --intro-blur: 16px;
   --intro-brightness: 0.72;
   --intro-shift-x: 0rem;
-  --intro-shift-y: clamp(0.22rem, 0.45vw, 0.36rem);
+  --intro-shift-y: clamp(0.44rem, 0.9vw, 0.72rem);
   --intro-ease: cubic-bezier(0.2, 0.95, 0.22, 1);
+  --intro-settle-ease: cubic-bezier(0.16, 0.84, 0.22, 1);
   transform-origin: center bottom;
 }
 
 .home-page [data-intro-group="media"]:not([data-intro-group="page"]) {
   --intro-blur: 24px;
   --intro-brightness: 0.56;
-  --intro-shift-y: clamp(0.36rem, 0.72vw, 0.56rem);
+  --intro-shift-y: clamp(0.72rem, 1.44vw, 1.12rem);
   --intro-ease: cubic-bezier(0.16, 0.96, 0.2, 1);
 }
 
 .home-page [data-intro-group="title"]:not([data-intro-group="page"]) {
   --intro-blur: 18px;
   --intro-brightness: 0.68;
-  --intro-shift-y: clamp(0.28rem, 0.56vw, 0.42rem);
+  --intro-shift-y: clamp(0.56rem, 1.12vw, 0.84rem);
 }
 
 .home-page [data-intro-group="body"]:not([data-intro-group="page"]) {
   --intro-blur: 14px;
   --intro-brightness: 0.78;
-  --intro-shift-y: clamp(0.2rem, 0.4vw, 0.3rem);
+  --intro-shift-y: clamp(0.4rem, 0.8vw, 0.6rem);
 }
 
 html.home-intro-pending .home-page [data-intro-group]:not([data-intro-group="page"]),
@@ -2372,9 +2374,9 @@ html.home-intro-playing .home-page [data-intro-group]:not([data-intro-group="pag
 body.home-intro-playing.home-page [data-intro-group]:not([data-intro-group="page"]) {
   will-change: opacity, transform, filter;
   transition:
-    opacity var(--intro-duration) var(--intro-ease),
-    transform var(--intro-duration) var(--intro-ease),
-    filter var(--intro-duration) var(--intro-ease);
+    opacity var(--intro-reveal-duration) var(--intro-ease),
+    transform var(--intro-duration) var(--intro-settle-ease),
+    filter var(--intro-reveal-duration) var(--intro-ease);
 }
 
 html.home-intro-playing .home-page [data-intro-group]:not([data-intro-group="page"]).is-intro-visible,

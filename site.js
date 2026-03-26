@@ -111,6 +111,7 @@ const initHomeIntro = () => {
 
         element.style.setProperty("--intro-delay", `${delay}ms`);
         element.style.setProperty("--intro-duration", `${duration}ms`);
+        element.style.setProperty("--intro-reveal-duration", `${Math.round((duration * 2) / 3)}ms`);
       });
     });
   };
