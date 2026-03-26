@@ -1980,6 +1980,15 @@ body.shell-page .contact-grid li + li {
     grid-template-columns: 1fr;
   }
 
+  .testimonial-layout {
+    row-gap: calc(1rem + 24px);
+  }
+
+  .quote-bubble-secondary {
+    justify-self: start;
+    margin-top: 0;
+  }
+
   .sports-grid {
     grid-template-areas:
       "tri"
@@ -2090,10 +2099,6 @@ body.shell-page .contact-grid li + li {
 
   .quote-bubble {
     padding: 1rem 1rem 0.9rem;
-  }
-
-  .quote-bubble-secondary {
-    margin-top: 1rem;
   }
 
   .sport-copy {

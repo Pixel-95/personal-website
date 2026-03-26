@@ -542,13 +542,18 @@ const appendCvContent = (target, value, source) => {
   appendCvText(target, value);
 };
 
+const appendCvPlainContent = (target, value, source) => {
+  const plainValue = source?.textContent?.trim() ?? "";
+  appendCvText(target, plainValue || value);
+};
+
 const createCvMetaRow = (kind, iconSrc, iconAlt, value, source) => {
   const row = document.createElement("div");
   row.className = `cv-meta-row is-${kind}`;
   row.append(createCvImage(iconSrc, iconAlt, "cv-entry-picture"));
 
   const copy = document.createElement("p");
-  appendCvContent(copy, value, source);
+  appendCvPlainContent(copy, value, source);
   row.append(copy);
 
   return row;
