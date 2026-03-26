@@ -1981,7 +1981,7 @@ body.shell-page .contact-grid li + li {
   }
 
   .testimonial-layout {
-    row-gap: calc(1rem + 24px);
+    row-gap: calc(1.5rem + 24px);
   }
 
   .quote-bubble-secondary {
@@ -3295,7 +3295,7 @@ body.shell-page .project-meta li + li {
   scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
   overscroll-behavior-x: contain;
   -webkit-overflow-scrolling: touch;
-  touch-action: pan-x;
+  touch-action: auto;
 }
 
 .project-gallery::-webkit-scrollbar {
