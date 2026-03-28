@@ -341,11 +341,17 @@ const initTechStackMarquee = () => {
   marqueeInner.classList.add("is-ready");
 
   const mobileQuery = window.matchMedia(cvTimelineStackQuery);
+  const touchDragThreshold = 10;
   let cycleLength = 0;
   let animationFrameId = null;
   let lastTimestamp = 0;
   let resumeTimeoutId = null;
   let isProgrammaticScroll = false;
+  let activeTouchId = null;
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let lastTouchX = 0;
+  let touchIntent = null;
 
   const getTrackGap = () => {
     const styles = window.getComputedStyle(marqueeInner);
@@ -371,6 +377,28 @@ const initTechStackMarquee = () => {
       clearTimeout(resumeTimeoutId);
       resumeTimeoutId = null;
     }
+  };
+
+  const resetTouchTracking = () => {
+    activeTouchId = null;
+    touchStartX = 0;
+    touchStartY = 0;
+    lastTouchX = 0;
+    touchIntent = null;
+  };
+
+  const getTrackedTouch = (touchList) => {
+    if (activeTouchId === null) {
+      return null;
+    }
+
+    for (const touch of touchList) {
+      if (touch.identifier === activeTouchId) {
+        return touch;
+      }
+    }
+
+    return null;
   };
 
   const normalizeScrollPosition = () => {
@@ -448,9 +476,74 @@ const initTechStackMarquee = () => {
     }, 1200);
   };
 
+  const handleTouchStart = (event) => {
+    if (!mobileQuery.matches || event.touches.length !== 1) {
+      return;
+    }
+
+    const touch = event.changedTouches[0];
+
+    pauseAutoScroll();
+    activeTouchId = touch.identifier;
+    touchStartX = touch.clientX;
+    touchStartY = touch.clientY;
+    lastTouchX = touch.clientX;
+    touchIntent = null;
+  };
+
+  const handleTouchMove = (event) => {
+    if (!mobileQuery.matches || activeTouchId === null) {
+      return;
+    }
+
+    const touch = getTrackedTouch(event.touches) ?? getTrackedTouch(event.changedTouches);
+
+    if (!touch) {
+      return;
+    }
+
+    const totalDeltaX = touch.clientX - touchStartX;
+    const totalDeltaY = touch.clientY - touchStartY;
+
+    if (touchIntent === null) {
+      if (Math.abs(totalDeltaX) < touchDragThreshold && Math.abs(totalDeltaY) < touchDragThreshold) {
+        return;
+      }
+
+      touchIntent = Math.abs(totalDeltaX) > Math.abs(totalDeltaY) ? "horizontal" : "vertical";
+    }
+
+    if (touchIntent !== "horizontal") {
+      return;
+    }
+
+    event.preventDefault();
+    isProgrammaticScroll = true;
+    marquee.scrollLeft -= touch.clientX - lastTouchX;
+    lastTouchX = touch.clientX;
+    normalizeScrollPosition();
+  };
+
+  const finishTouchInteraction = (event) => {
+    if (!mobileQuery.matches || activeTouchId === null) {
+      return;
+    }
+
+    const remainingTouch = getTrackedTouch(event.touches);
+    const changedTouch = getTrackedTouch(event.changedTouches);
+
+    if (remainingTouch && !changedTouch) {
+      return;
+    }
+
+    resetTouchTracking();
+    pauseAndResumeAutoScroll();
+  };
+
   const syncMarqueeMode = () => {
     stopAutoScroll();
     clearResumeTimeout();
+    resetTouchTracking();
     measureCycleLength();
 
     if (!mobileQuery.matches) {
@@ -485,12 +578,31 @@ const initTechStackMarquee = () => {
     pauseAndResumeAutoScroll();
   }, { passive: true });
 
-  marquee.addEventListener("pointerdown", pauseAutoScroll, { passive: true });
-  marquee.addEventListener("pointerup", pauseAndResumeAutoScroll, { passive: true });
-  marquee.addEventListener("pointercancel", pauseAndResumeAutoScroll, { passive: true });
-  marquee.addEventListener("touchstart", pauseAutoScroll, { passive: true });
-  marquee.addEventListener("touchend", pauseAndResumeAutoScroll, { passive: true });
-  marquee.addEventListener("touchcancel", pauseAndResumeAutoScroll, { passive: true });
+  marquee.addEventListener("pointerdown", (event) => {
+    if (event.pointerType === "touch") {
+      return;
+    }
+
+    pauseAutoScroll();
+  }, { passive: true });
+  marquee.addEventListener("pointerup", (event) => {
+    if (event.pointerType === "touch") {
+      return;
+    }
+
+    pauseAndResumeAutoScroll();
+  }, { passive: true });
+  marquee.addEventListener("pointercancel", (event) => {
+    if (event.pointerType === "touch") {
+      return;
+    }
+
+    pauseAndResumeAutoScroll();
+  }, { passive: true });
+  marquee.addEventListener("touchstart", handleTouchStart, { passive: true });
+  marquee.addEventListener("touchmove", handleTouchMove, { passive: false });
+  marquee.addEventListener("touchend", finishTouchInteraction, { passive: true });
+  marquee.addEventListener("touchcancel", finishTouchInteraction, { passive: true });
   marquee.addEventListener("wheel", pauseAndResumeAutoScroll, { passive: true });
 
   addMediaChangeListener(mobileQuery, syncMarqueeMode);
