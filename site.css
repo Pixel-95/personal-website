@@ -1639,10 +1639,13 @@ body.shell-page .contact-grid li + li {
 }
 
 .quote-bubble {
-  --quote-bubble-border-color: rgba(255, 255, 255, 0.08);
-  --quote-bubble-stroke-width: 1.15px;
+  --quote-bubble-border-color: rgba(255, 236, 228, 0.2);
+  --quote-bubble-fill-color: rgba(255, 255, 255, 0.025);
+  --quote-bubble-glow-color: rgba(255, 150, 108, 0.12);
+  --quote-bubble-stroke-width: 1.45px;
   --quote-bubble-tail-depth: 24px;
   position: relative;
+  isolation: isolate;
   max-width: 34rem;
   padding: 1.2rem 1.35rem 1rem;
   border: 0;
@@ -1657,11 +1660,14 @@ body.shell-page .contact-grid li + li {
   display: block;
   width: 100%;
   height: calc(100% + var(--quote-bubble-tail-depth));
+  filter:
+    drop-shadow(0 18px 28px rgba(0, 0, 0, 0.18))
+    drop-shadow(0 0 16px var(--quote-bubble-glow-color));
   pointer-events: none;
 }
 
 .quote-bubble-frame path {
-  fill: none;
+  fill: var(--quote-bubble-fill-color);
   stroke: var(--quote-bubble-border-color);
   stroke-width: var(--quote-bubble-stroke-width);
   vector-effect: non-scaling-stroke;
@@ -1676,11 +1682,16 @@ body.shell-page .contact-grid li + li {
 
 .quote-bubble-primary {
   justify-self: start;
+  --quote-bubble-fill-color: rgba(255, 132, 82, 0.055);
+  --quote-bubble-glow-color: rgba(255, 137, 94, 0.16);
 }
 
 .quote-bubble-secondary {
   justify-self: end;
   margin-top: 2.1rem;
+  --quote-bubble-border-color: rgba(255, 255, 255, 0.18);
+  --quote-bubble-fill-color: rgba(255, 255, 255, 0.03);
+  --quote-bubble-glow-color: rgba(255, 255, 255, 0.08);
 }
 
 .quote-bubble-secondary .quote-bubble-frame {
@@ -2098,6 +2109,8 @@ body.shell-page .contact-grid li + li {
   }
 
   .quote-bubble {
+    --quote-bubble-border-color: rgba(255, 241, 235, 0.28);
+    --quote-bubble-stroke-width: 1.9px;
     padding: 1rem 1rem 0.9rem;
   }
 
