@@ -426,13 +426,22 @@ const initTechStackMarquee = () => {
     animationFrameId = requestAnimationFrame(step);
   };
 
-  const pauseAndResumeAutoScroll = () => {
+  const pauseAutoScroll = () => {
     if (!mobileQuery.matches || prefersReducedMotion.matches) {
       return;
     }
 
     stopAutoScroll();
     clearResumeTimeout();
+  };
+
+  const pauseAndResumeAutoScroll = () => {
+    pauseAutoScroll();
+
+    if (!mobileQuery.matches || prefersReducedMotion.matches) {
+      return;
+    }
+
     resumeTimeoutId = window.setTimeout(() => {
       resumeTimeoutId = null;
       startAutoScroll();
@@ -476,8 +485,12 @@ const initTechStackMarquee = () => {
     pauseAndResumeAutoScroll();
   }, { passive: true });
 
-  marquee.addEventListener("pointerdown", pauseAndResumeAutoScroll, { passive: true });
-  marquee.addEventListener("touchstart", pauseAndResumeAutoScroll, { passive: true });
+  marquee.addEventListener("pointerdown", pauseAutoScroll, { passive: true });
+  marquee.addEventListener("pointerup", pauseAndResumeAutoScroll, { passive: true });
+  marquee.addEventListener("pointercancel", pauseAndResumeAutoScroll, { passive: true });
+  marquee.addEventListener("touchstart", pauseAutoScroll, { passive: true });
+  marquee.addEventListener("touchend", pauseAndResumeAutoScroll, { passive: true });
+  marquee.addEventListener("touchcancel", pauseAndResumeAutoScroll, { passive: true });
   marquee.addEventListener("wheel", pauseAndResumeAutoScroll, { passive: true });
 
   addMediaChangeListener(mobileQuery, syncMarqueeMode);

@@ -2823,6 +2823,7 @@ body.home-intro-complete.home-page [data-intro-group]:not([data-intro-group="pag
     overflow-y: hidden;
     mask-image: none;
     scrollbar-width: none;
+    -ms-overflow-style: none;
     touch-action: pan-x;
     overscroll-behavior-x: contain;
     -webkit-overflow-scrolling: touch;
@@ -3563,6 +3564,7 @@ body.shell-page .project-meta li + li {
     overflow-y: hidden;
     mask-image: none;
     scrollbar-width: none;
+    -ms-overflow-style: none;
     touch-action: pan-x;
     overscroll-behavior-x: contain;
     -webkit-overflow-scrolling: touch;
