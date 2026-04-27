@@ -1633,8 +1633,8 @@ body.shell-page .contact-grid li + li {
 
 .testimonial-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  gap: 1rem;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  row-gap: calc(1.25rem + var(--quote-bubble-tail-depth, 24px));
   align-items: start;
 }
 
@@ -1642,15 +1642,31 @@ body.shell-page .contact-grid li + li {
   --quote-bubble-border-color: rgba(255, 236, 228, 0.2);
   --quote-bubble-fill-color: rgba(255, 255, 255, 0.025);
   --quote-bubble-glow-color: rgba(255, 150, 108, 0.12);
+  --quote-mark-color: rgba(255, 210, 188, 0.18);
   --quote-bubble-stroke-width: 1.45px;
   --quote-bubble-tail-depth: 24px;
   position: relative;
   isolation: isolate;
-  max-width: 34rem;
-  padding: 1.2rem 1.35rem 1rem;
+  width: 100%;
+  max-width: none;
+  padding: 1.35rem 1.3rem 1.05rem;
   border: 0;
   background: transparent;
   box-shadow: none;
+}
+
+.quote-bubble::before {
+  content: "\201C";
+  position: absolute;
+  top: 0.42rem;
+  left: 1.15rem;
+  z-index: 0;
+  color: var(--quote-mark-color);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 6.4rem;
+  font-weight: 700;
+  line-height: 1;
+  pointer-events: none;
 }
 
 .quote-bubble-frame {
@@ -1680,35 +1696,105 @@ body.shell-page .contact-grid li + li {
   z-index: 1;
 }
 
-.quote-bubble-primary {
-  justify-self: start;
+.quote-bubble-primary,
+.quote-bubble-tertiary {
+  grid-column: 1 / 8;
   --quote-bubble-fill-color: rgba(255, 132, 82, 0.055);
   --quote-bubble-glow-color: rgba(255, 137, 94, 0.16);
 }
 
-.quote-bubble-secondary {
-  justify-self: end;
-  margin-top: 2.1rem;
+.quote-bubble-secondary,
+.quote-bubble-quaternary {
+  grid-column: 6 / 13;
+  margin-top: 0;
   --quote-bubble-border-color: rgba(255, 255, 255, 0.18);
   --quote-bubble-fill-color: rgba(255, 255, 255, 0.03);
   --quote-bubble-glow-color: rgba(255, 255, 255, 0.08);
+  --quote-mark-color: rgba(255, 255, 255, 0.15);
 }
 
-.quote-bubble-secondary .quote-bubble-frame {
+.quote-bubble-tertiary {
+  margin-top: 0;
+}
+
+.quote-bubble-tertiary {
+  --quote-bubble-border-color: rgba(255, 236, 228, 0.18);
+  --quote-bubble-fill-color: rgba(255, 132, 82, 0.04);
+  --quote-bubble-glow-color: rgba(255, 137, 94, 0.12);
+}
+
+.quote-bubble-primary {
+  z-index: 4;
+}
+
+.quote-bubble-secondary {
+  z-index: 3;
+}
+
+.quote-bubble-tertiary {
+  z-index: 2;
+}
+
+.quote-bubble-quaternary {
+  z-index: 1;
+}
+
+.quote-bubble-secondary .quote-bubble-frame,
+.quote-bubble-quaternary .quote-bubble-frame {
   transform: scaleX(-1);
   transform-origin: center;
 }
 
+.quote-bubble-secondary::before,
+.quote-bubble-quaternary::before {
+  right: 1.15rem;
+  left: auto;
+}
+
 .quote-bubble p {
+  margin-left: 4.35rem;
   font-size: 1.04rem;
   line-height: 1.55;
   color: var(--text-primary);
 }
 
+.quote-bubble-secondary p,
+.quote-bubble-quaternary p {
+  margin-right: 4.35rem;
+  margin-left: 0;
+}
+
+.quote-emphasis {
+  color: rgba(255, 176, 137, 0.98);
+  font-weight: 700;
+}
+
 .quote-bubble cite {
   display: block;
-  margin-top: 0.75rem;
+  margin-top: 1.15rem;
+  padding-top: 0.72rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.075);
   font-style: normal;
+}
+
+.quote-bubble-secondary cite,
+.quote-bubble-quaternary cite {
+  text-align: right;
+}
+
+.quote-author {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text-tertiary);
+}
+
+.quote-role {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.78rem;
+  line-height: 1.35;
   color: var(--text-tertiary);
 }
 
@@ -1995,7 +2081,16 @@ body.shell-page .contact-grid li + li {
     row-gap: calc(1.5rem + 24px);
   }
 
-  .quote-bubble-secondary {
+  .quote-bubble {
+    grid-column: 1;
+  }
+
+  .quote-bubble-tertiary {
+    margin-top: 0;
+  }
+
+  .quote-bubble-secondary,
+  .quote-bubble-quaternary {
     justify-self: start;
     margin-top: 0;
   }
@@ -2111,7 +2206,34 @@ body.shell-page .contact-grid li + li {
   .quote-bubble {
     --quote-bubble-border-color: rgba(255, 241, 235, 0.28);
     --quote-bubble-stroke-width: 1.9px;
-    padding: 1rem 1rem 0.9rem;
+    padding: 1.15rem 1rem 0.95rem;
+  }
+
+  .quote-bubble::before {
+    top: 0.32rem;
+    left: 0.78rem;
+    font-size: 4.65rem;
+  }
+
+  .quote-bubble-secondary::before,
+  .quote-bubble-quaternary::before {
+    right: 0.8rem;
+    left: auto;
+  }
+
+  .quote-bubble p {
+    margin-left: 3.05rem;
+    font-size: 0.98rem;
+  }
+
+  .quote-bubble-secondary p,
+  .quote-bubble-quaternary p {
+    margin-right: 3.05rem;
+    margin-left: 0;
+  }
+
+  .quote-role {
+    font-size: 0.76rem;
   }
 
   .sport-copy {
@@ -2476,13 +2598,15 @@ body.home-intro-complete.home-page [data-intro-group]:not([data-intro-group="pag
 }
 
 .quote-bubble,
-.quote-bubble-secondary {
+.quote-bubble-secondary,
+.quote-bubble-quaternary {
   background: transparent;
   box-shadow: none;
 }
 
-.quote-bubble-secondary {
-  margin-top: 1.65rem;
+.quote-bubble-secondary,
+.quote-bubble-quaternary {
+  margin-top: 0;
 }
 
 .sports-section {
@@ -2765,6 +2889,24 @@ body.home-intro-complete.home-page [data-intro-group]:not([data-intro-group="pag
 }
 
 @media (max-width: 67.5rem) {
+  .testimonial-layout {
+    row-gap: calc(1.35rem + 24px);
+  }
+
+  .quote-bubble {
+    grid-column: 1;
+  }
+
+  .quote-bubble-tertiary {
+    margin-top: 0;
+  }
+
+  .quote-bubble-secondary,
+  .quote-bubble-quaternary {
+    justify-self: start;
+    margin-top: 0;
+  }
+
   .hero-actions {
     gap: 0.8rem;
   }
@@ -2941,7 +3083,8 @@ body.home-intro-complete.home-page [data-intro-group]:not([data-intro-group="pag
     font-size: 0.96rem;
   }
 
-  .quote-bubble-secondary {
+  .quote-bubble-secondary,
+  .quote-bubble-quaternary {
     justify-self: start;
     margin-top: 0;
   }
